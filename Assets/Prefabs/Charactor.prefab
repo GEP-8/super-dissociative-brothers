@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 179252059583688683}
   - component: {fileID: 8153891808064003936}
   - component: {fileID: 1162262453044218643}
-  - component: {fileID: 3670530527091655585}
   - component: {fileID: 3226371800214689686}
   - component: {fileID: -278549503891398555}
+  - component: {fileID: -2249680401593702079}
   m_Layer: 0
   m_Name: Charactor
   m_TagString: Untagged
@@ -113,19 +113,6 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &3670530527091655585
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4913420507387632555}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e360c7cdbcc942218bdb98bcab982756, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 1
 --- !u!114 &3226371800214689686
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -197,3 +184,16 @@ MonoBehaviour:
   SwitchTransformSpaceWhenParented: 0
   Interpolate: 0
   SlerpPosition: 0
+--- !u!114 &-2249680401593702079
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4913420507387632555}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e31cea9a9aff47d996746f53ccf2ee26, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShowTopMostFoldoutHeaderGroup: 1

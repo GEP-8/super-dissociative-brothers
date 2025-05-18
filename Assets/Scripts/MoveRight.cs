@@ -1,12 +1,9 @@
-﻿
-using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class MoveRight : MonoBehaviour {
-    [SerializeField]
-    public float speed = 0.1f;
-    
+    [SerializeField] public float speed = 0.1f;
+
     private void Update() {
-        this.transform.Translate(speed * Time.deltaTime, 0f, 0f);
+        transform.Translate(speed * Time.deltaTime, 0f, 0f);
     }
 }

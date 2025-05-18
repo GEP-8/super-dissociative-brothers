@@ -1,0 +1,98 @@
+﻿using System.Collections.Generic;
+using Unity.Netcode;
+using UnityEngine;
+
+namespace Network {
+    public enum PlayerAction {
+        RightMove,
+        LeftMove,
+        UpMove,
+        DownMove,
+        Jump
+    }
+
+    public class PlayerController : NetworkBehaviour {
+        public static PlayerController Instance { get; private set; }
+
+
+        public Dictionary<ulong, PlayerAction[]> AllowedActionsDictionary { get; } = new();
+
+        private void Awake() {
+            // 싱글톤 인스턴스 설정
+            if (Instance == null) {
+                Instance = this;
+            }
+            else {
+                Debug.LogError("PlayerController 인스턴스가 이미 존재합니다! 중복된 인스턴스를 제거합니다.");
+                Destroy(gameObject); // 중복된 인스턴스가 있다면 삭제
+            }
+        }
+
+        public override void OnNetworkSpawn() {
+            // server 에서만 플레이어의 움직임을 관리
+            if (!IsServer) {
+                enabled = false;
+                return;
+            }
+
+            // 이벤트 구독
+            NetworkManager.Singleton.OnClientConnectedCallback += OnClientConnected;
+        }
+
+        public override void OnNetworkDespawn() {
+            // Despawn 시 이벤트 구독 해제 (서버에서만)
+            if (IsServer && NetworkManager.Singleton != null) // 씬 전환 등으로 NetworkManager가 null이 될 수 있으니 체크
+                NetworkManager.Singleton.OnClientConnectedCallback -= OnClientConnected;
+        }
+
+        private void OnClientConnected(ulong clientId) {
+            Debug.Log($"클라이언트 ID: {clientId}가 서버에 연결되었습니다.");
+
+            AllowedActionsDictionary[clientId] = new[] {
+                //tmp for test
+                PlayerAction.RightMove,
+                PlayerAction.LeftMove,
+                PlayerAction.UpMove,
+                PlayerAction.DownMove,
+                PlayerAction.Jump
+            };
+
+            SyncAllowedActions(clientId);
+        }
+
+        private void SyncAllowedActions(ulong clientId) {
+            // TODO: if문 중첩 해결 && 좀더 간단하게 call하는 방법 찾기... 자료가 잘 없어서 힘드네
+            // 연결된 클라이언트의 PlayerObject를 찾습니다.
+            if (NetworkManager.Singleton.ConnectedClients.TryGetValue(clientId, out NetworkClient networkClient)) {
+                if (networkClient.PlayerObject != null) {
+                    // PlayerObject에서 PlayerInput 스크립트를 가져옵니다.
+                    // 서버에서는 클라이언트의 PlayerObject 인스턴스를 가지고 있습니다.
+                    PlayerInput playerInput = networkClient.PlayerObject.GetComponent<PlayerInput>();
+
+                    if (playerInput != null) {
+                        // ClientRpcParams 구조체를 생성하고 TargetClientId를 설정합니다.
+                        ClientRpcParams rpcParams = new() {
+                            Send = new ClientRpcSendParams {
+                                TargetClientIds = new[] { clientId } // **여기서 특정 클라이언트 ID를 지정합니다.**
+                            }
+                        };
+
+                        // PlayerInput 스크립트의 ClientRpc 메소드를 호출하여 액션 목록을 전송합니다.
+                        playerInput.ReceiveAllowedActionsClientRpc(AllowedActionsDictionary[clientId], rpcParams);
+
+                        Debug.Log($"Client {clientId}에게 허용된 액션 목록을 전송했습니다.");
+                    }
+                    else {
+                        Debug.LogError($"Client {clientId}'s PlayerObject does not have PlayerInput component.");
+                    }
+                }
+                else {
+                    Debug.LogError($"Client {clientId}'s PlayerObject is null.");
+                }
+            }
+            else {
+                Debug.LogError($"NetworkClient not found for client {clientId}.");
+            }
+        }
+    }
+}
