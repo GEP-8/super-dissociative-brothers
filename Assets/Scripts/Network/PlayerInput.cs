@@ -1,4 +1,6 @@
-﻿using Unity.Netcode;
+﻿using System;
+using System.Collections.Generic;
+using Unity.Netcode;
 using UnityEngine;
 
 namespace Network {
@@ -6,13 +8,29 @@ namespace Network {
         // 서버로부터 받은 데이터를 저장
         private PlayerAction[] _allowedActions;
 
+        // 키가 눌린 상태이면 true, 아니면 false
+        private bool[] _allowedActionsStatus;
+
+
+        public Dictionary<KeyCode, PlayerAction> KeyToActionDictionary { get; } = new() {
+            { KeyCode.W, PlayerAction.UpMove },
+            { KeyCode.UpArrow, PlayerAction.UpMove },
+            { KeyCode.A, PlayerAction.LeftMove },
+            { KeyCode.LeftArrow, PlayerAction.LeftMove },
+            { KeyCode.D, PlayerAction.RightMove },
+            { KeyCode.RightArrow, PlayerAction.RightMove },
+            { KeyCode.S, PlayerAction.DownMove },
+            { KeyCode.DownArrow, PlayerAction.DownMove },
+            { KeyCode.Space, PlayerAction.Jump }
+        };
+
         public override void OnNetworkSpawn() {
-            if (!IsClient) {
+            if (!IsClient || !IsOwner) {
                 enabled = false;
                 return;
             }
 
-            Debug.Log(_allowedActions);
+            _allowedActionsStatus = new bool[Enum.GetValues(typeof(PlayerAction)).Length];
         }
 
         public override void OnNetworkDespawn() {
@@ -25,6 +43,7 @@ namespace Network {
         public void ReceiveAllowedActionsClientRpc(PlayerAction[] actions, ClientRpcParams clientRpcParams = default) {
             // 이 코드는 RPC를 보낸 특정 클라이언트의 PlayerInput 인스턴스에서 실행됩니다.
             _allowedActions = actions;
+            Array.Fill(_allowedActionsStatus, false);
 
             Debug.Log(
                 $"클라이언트 {NetworkManager.Singleton.LocalClientId}가 허용된 액션 목록을 받았습니다: {string.Join(", ", _allowedActions)}");
@@ -33,13 +52,29 @@ namespace Network {
 
         // 실제 입력 처리 로직 예시
         private void Update() {
-            // 로컬 플레이어의 클라이언트에서만 실행
-            if (!IsClient || !IsOwner) return;
+            foreach (KeyValuePair<KeyCode, PlayerAction> keyToAction in KeyToActionDictionary) {
+                // 키보드가 눌리니 이벤트 시작
+                if (Input.GetKeyDown(keyToAction.Key)) {
+                    // 기존과 값이 달라진 경우
+                    if (_allowedActionsStatus[(int)keyToAction.Value] == false) {
+                        _allowedActionsStatus[(int)keyToAction.Value] = true;
 
-            // 허용된 액션 목록을 받았는지 확인
-            if (_allowedActions == null)
-                // 액션 목록을 받을 때까지 입력 처리를 건너뜁니다.
-                return;
+                        // sync to server
+                        PlayerController.Instance.SyncClientStateServerRpc(keyToAction.Value, true);
+                    }
+                }
+
+                // 키보드가 떨어지니 이벤트 끝
+                if (Input.GetKeyUp(keyToAction.Key)) {
+                    // 기존과 값이 달라진 경우
+                    if (_allowedActionsStatus[(int)keyToAction.Value]) {
+                        _allowedActionsStatus[(int)keyToAction.Value] = false;
+
+                        // sync to server
+                        PlayerController.Instance.SyncClientStateServerRpc(keyToAction.Value, false);
+                    }
+                }
+            }
         }
     }
 }

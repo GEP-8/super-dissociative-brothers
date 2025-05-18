@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using Unity.Netcode;
 using UnityEngine;
 
@@ -16,6 +17,7 @@ namespace Network {
 
 
         public Dictionary<ulong, PlayerAction[]> AllowedActionsDictionary { get; } = new();
+        public Dictionary<ulong, Dictionary<PlayerAction, bool>> ActionStatusDictionary { get; } = new();
 
         private void Awake() {
             // 싱글톤 인스턴스 설정
@@ -42,7 +44,9 @@ namespace Network {
         public override void OnNetworkDespawn() {
             // Despawn 시 이벤트 구독 해제 (서버에서만)
             if (IsServer && NetworkManager.Singleton != null) // 씬 전환 등으로 NetworkManager가 null이 될 수 있으니 체크
+            {
                 NetworkManager.Singleton.OnClientConnectedCallback -= OnClientConnected;
+            }
         }
 
         private void OnClientConnected(ulong clientId) {
@@ -56,6 +60,7 @@ namespace Network {
                 PlayerAction.DownMove,
                 PlayerAction.Jump
             };
+            ActionStatusDictionary[clientId] = new Dictionary<PlayerAction, bool>();
 
             SyncAllowedActions(clientId);
         }
@@ -93,6 +98,26 @@ namespace Network {
             else {
                 Debug.LogError($"NetworkClient not found for client {clientId}.");
             }
+        }
+
+        // 클라이언트가 이 RPC를 호출하여 자신의 상태를 서버로 보냅니다.
+        [ServerRpc(RequireOwnership = false)] // 소유권 없이 모든 클라이언트가 호출 가능
+        public void SyncClientStateServerRpc(PlayerAction playerAction, bool value,
+            ServerRpcParams rpcParams = default) {
+            // server가 아니면 enabled = false라 없어도 됨
+            // if (!IsServer) {
+            //     return;
+            // }
+
+            ulong invokedClientId = rpcParams.Receive.SenderClientId;
+
+            if (!AllowedActionsDictionary[invokedClientId].Contains(playerAction)) {
+                Debug.LogError($"Client {invokedClientId} is not allowed to perform {playerAction}.");
+                return;
+            }
+
+            ActionStatusDictionary[invokedClientId][playerAction] = value;
+            Debug.Log($"Server received {playerAction}: {value}. from Client ID: {invokedClientId}");
         }
     }
 }
