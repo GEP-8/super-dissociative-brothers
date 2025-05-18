@@ -60,7 +60,7 @@ namespace Network {
                         _allowedActionsStatus[(int)keyToAction.Value] = true;
 
                         // sync to server
-                        PlayerController.Instance.SyncClientStateServerRpc(keyToAction.Value, true);
+                        PlayerNetwork.Instance.SyncClientStateServerRpc(keyToAction.Value, true);
                     }
                 }
 
@@ -71,7 +71,7 @@ namespace Network {
                         _allowedActionsStatus[(int)keyToAction.Value] = false;
 
                         // sync to server
-                        PlayerController.Instance.SyncClientStateServerRpc(keyToAction.Value, false);
+                        PlayerNetwork.Instance.SyncClientStateServerRpc(keyToAction.Value, false);
                     }
                 }
             }
