@@ -1,38 +1,57 @@
 ﻿using UnityEngine;
 
-namespace Network {
+namespace Network
+{
     [RequireComponent(typeof(PlayerNetwork))] // 일단은 이렇게 되어있는데 매니저로 빼는게 좋을려나?
-    public class PlayerController : MonoBehaviour {
+    [RequireComponent(typeof(Rigidbody))] // Rigidbody가 필요하다면 추가
+    public class PlayerController : MonoBehaviour
+    {
         private PlayerNetwork playerNetwork;
+        private Rigidbody rb;
+        private Vector2 dir;
 
-        private void Awake() {
+        private void Awake()
+        {
             playerNetwork = PlayerNetwork.Instance;
+            rb = GetComponent<Rigidbody>();
         }
 
-        private void Update() {
-            foreach ((PlayerAction playerAction, bool value) in playerNetwork.MergedActionStatusDictionary) {
-                if (!value) {
+        private void FixedUpdate()
+        {
+            dir = Vector2.zero; // 이동 후 방향 초기화
+            foreach ((PlayerAction playerAction, bool value) in playerNetwork.MergedActionStatusDictionary)
+            {
+                if (!value)
+                {
                     continue;
                 }
 
-                switch (playerAction) {
+                switch (playerAction)
+                {
                     case PlayerAction.RightMove:
-                        transform.Translate(Vector3.right * (Time.deltaTime * 10));
+                        dir = Vector2.right;
                         break;
                     case PlayerAction.LeftMove:
-                        transform.Translate(Vector3.left * (Time.deltaTime * 10));
+                        dir = Vector2.left;
                         break;
                     case PlayerAction.UpMove:
-                        transform.Translate(Vector3.up * (Time.deltaTime * 10));
+                        dir = Vector2.up;
                         break;
                     case PlayerAction.DownMove:
-                        transform.Translate(Vector3.down * (Time.deltaTime * 10));
+                        dir = Vector2.down;
                         break;
                     case PlayerAction.Jump:
                         // TODO
                         break;
+
                 }
+
             }
+            // Rigidbody를 사용하여 이동
+            rb.linearVelocity = new Vector2(0f, rb.linearVelocity.y) + dir * 5f; // y축은 0으로 설정하여 2D 이동만 처리
+
+
+
         }
     }
 }
