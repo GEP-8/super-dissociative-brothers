@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: b6a60f024197d8045a6183ed81fd05f7
+guid: 8612077395c9e3d419ddf845644326cd
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -584585008233743951
-    second: goal_flag_3_0
+      213: 2608534806445164875
+    second: Fire_2_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -51,7 +51,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 200
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: goal_flag_3_0
+      name: Fire_2_0
       rect:
         serializedVersion: 2
-        x: 24
-        y: 8
-        width: 55
-        height: 71
+        x: 29
+        y: 0
+        width: 142
+        height: 200
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 1b97533480323e7f0800000000000000
-      internalID: -584585008233743951
+      spriteID: b49086af590633420800000000000000
+      internalID: 2608534806445164875
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      goal_flag_3_0: -584585008233743951
+      Fire_2_0: 2608534806445164875
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
