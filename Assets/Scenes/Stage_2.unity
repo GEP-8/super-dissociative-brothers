@@ -130,6 +130,8 @@ GameObject:
   - component: {fileID: 8175364}
   - component: {fileID: 8175366}
   - component: {fileID: 8175365}
+  - component: {fileID: 8175368}
+  - component: {fileID: 8175367}
   m_Layer: 0
   m_Name: Platform (Vertical)
   m_TagString: Untagged
@@ -253,6 +255,34 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &8175367
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8175363}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57fae338004f9894ea54de1321aaf694, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pointA: {fileID: 160794415}
+  pointB: {fileID: 1559358167}
+  movingSpeed: 1
+  waitTime: 1
+--- !u!114 &8175368
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8175363}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0005929e66e8e324ca8c05b9bb41680c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &145620849
 GameObject:
   m_ObjectHideFlags: 0
@@ -354,7 +384,7 @@ GameObject:
   - component: {fileID: 146439936}
   - component: {fileID: 146439935}
   - component: {fileID: 146439934}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Base Tilemap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1628,7 +1658,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 146439930}
-  m_BodyType: 1
+  m_BodyType: 2
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -1904,6 +1934,8 @@ GameObject:
   - component: {fileID: 555685288}
   - component: {fileID: 555685287}
   - component: {fileID: 555685289}
+  - component: {fileID: 555685291}
+  - component: {fileID: 555685290}
   m_Layer: 0
   m_Name: Platform (Vertical)
   m_TagString: Untagged
@@ -2027,6 +2059,34 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 3, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &555685290
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 555685286}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57fae338004f9894ea54de1321aaf694, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pointA: {fileID: 2078877494}
+  pointB: {fileID: 2131578587}
+  movingSpeed: 1
+  waitTime: 1
+--- !u!114 &555685291
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 555685286}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0005929e66e8e324ca8c05b9bb41680c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &577096123
 GameObject:
   m_ObjectHideFlags: 0
@@ -2038,6 +2098,8 @@ GameObject:
   - component: {fileID: 577096124}
   - component: {fileID: 577096126}
   - component: {fileID: 577096125}
+  - component: {fileID: 577096128}
+  - component: {fileID: 577096127}
   m_Layer: 0
   m_Name: Platform (Horizontal)
   m_TagString: Untagged
@@ -2161,6 +2223,34 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &577096127
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 577096123}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0005929e66e8e324ca8c05b9bb41680c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &577096128
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 577096123}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57fae338004f9894ea54de1321aaf694, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pointA: {fileID: 584901384}
+  pointB: {fileID: 1027879454}
+  movingSpeed: 1
+  waitTime: 1
 --- !u!1 &584901383
 GameObject:
   m_ObjectHideFlags: 0
@@ -2234,6 +2324,7 @@ GameObject:
   - component: {fileID: 600119973}
   - component: {fileID: 600119972}
   - component: {fileID: 600119974}
+  - component: {fileID: 600119975}
   m_Layer: 0
   m_Name: Obstacle (Fire) 1
   m_TagString: Untagged
@@ -2357,6 +2448,22 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.71, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &600119975
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 600119971}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57fae338004f9894ea54de1321aaf694, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pointA: {fileID: 293621946}
+  pointB: {fileID: 759709397}
+  movingSpeed: 1
+  waitTime: 1
 --- !u!1 &637701544
 GameObject:
   m_ObjectHideFlags: 0
@@ -2455,6 +2562,8 @@ GameObject:
   - component: {fileID: 664719598}
   - component: {fileID: 664719600}
   - component: {fileID: 664719599}
+  - component: {fileID: 664719602}
+  - component: {fileID: 664719601}
   m_Layer: 0
   m_Name: Platform (Horizontal)
   m_TagString: Untagged
@@ -2578,6 +2687,34 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &664719601
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 664719597}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0005929e66e8e324ca8c05b9bb41680c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &664719602
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 664719597}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57fae338004f9894ea54de1321aaf694, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pointA: {fileID: 815090843}
+  pointB: {fileID: 769856015}
+  movingSpeed: 1
+  waitTime: 1
 --- !u!1 &682363599
 GameObject:
   m_ObjectHideFlags: 0
@@ -3168,6 +3305,7 @@ GameObject:
   - component: {fileID: 1354064965}
   - component: {fileID: 1354064964}
   - component: {fileID: 1354064966}
+  - component: {fileID: 1354064967}
   m_Layer: 0
   m_Name: Coin
   m_TagString: Untagged
@@ -3282,6 +3420,20 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 0.52, y: 0.52}
   m_Direction: 0
+--- !u!114 &1354064967
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1354064963}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0f1de8982f476d4db223ee005bacb50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  floatAmplitude: 0.125
+  floatFrequency: 2
 --- !u!1 &1403389370
 GameObject:
   m_ObjectHideFlags: 0
@@ -3635,6 +3787,8 @@ GameObject:
   - component: {fileID: 1869553252}
   - component: {fileID: 1869553254}
   - component: {fileID: 1869553253}
+  - component: {fileID: 1869553256}
+  - component: {fileID: 1869553255}
   m_Layer: 0
   m_Name: Platform (Vertical)
   m_TagString: Untagged
@@ -3758,6 +3912,34 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1869553255
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1869553251}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0005929e66e8e324ca8c05b9bb41680c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1869553256
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1869553251}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57fae338004f9894ea54de1321aaf694, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pointA: {fileID: 1122758681}
+  pointB: {fileID: 2105692766}
+  movingSpeed: 1
+  waitTime: 1
 --- !u!1 &1886321174
 GameObject:
   m_ObjectHideFlags: 0
@@ -3803,6 +3985,8 @@ GameObject:
   - component: {fileID: 1920206794}
   - component: {fileID: 1920206796}
   - component: {fileID: 1920206795}
+  - component: {fileID: 1920206798}
+  - component: {fileID: 1920206797}
   m_Layer: 0
   m_Name: Platform (Vertical)
   m_TagString: Untagged
@@ -3926,6 +4110,34 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1920206797
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1920206793}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0005929e66e8e324ca8c05b9bb41680c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1920206798
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1920206793}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57fae338004f9894ea54de1321aaf694, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pointA: {fileID: 1161229565}
+  pointB: {fileID: 1524513689}
+  movingSpeed: 1
+  waitTime: 1
 --- !u!1 &2078877493
 GameObject:
   m_ObjectHideFlags: 0
@@ -4063,6 +4275,7 @@ GameObject:
   - component: {fileID: 2138830904}
   - component: {fileID: 2138830903}
   - component: {fileID: 2138830902}
+  - component: {fileID: 2138830905}
   m_Layer: 0
   m_Name: Obstacle (Fire) 2
   m_TagString: Untagged
@@ -4186,6 +4399,22 @@ Transform:
   m_Children: []
   m_Father: {fileID: 691811627}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2138830905
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2138830901}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57fae338004f9894ea54de1321aaf694, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pointA: {fileID: 1465624114}
+  pointB: {fileID: 596572825}
+  movingSpeed: 1
+  waitTime: 1
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

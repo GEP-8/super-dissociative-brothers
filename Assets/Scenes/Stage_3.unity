@@ -254,7 +254,7 @@ GameObject:
   - component: {fileID: 146439936}
   - component: {fileID: 146439935}
   - component: {fileID: 146439934}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Base Tilemap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2633,7 +2633,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 146439930}
-  m_BodyType: 1
+  m_BodyType: 2
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -2719,7 +2719,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1573923800}
+  m_Father: {fileID: 484307922}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &253348512
 GameObject:
@@ -2763,6 +2763,8 @@ GameObject:
   - component: {fileID: 263319663}
   - component: {fileID: 263319662}
   - component: {fileID: 263319664}
+  - component: {fileID: 263319665}
+  - component: {fileID: 263319666}
   m_Layer: 0
   m_Name: Enemy (Slime) 1
   m_TagString: Untagged
@@ -2837,7 +2839,9 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 303194024}
+  - {fileID: 729565775}
   m_Father: {fileID: 817115431}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &263319664
@@ -2886,6 +2890,56 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.61, y: 0.46}
   m_EdgeRadius: 0
+--- !u!114 &263319665
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 263319661}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d81702672a65b294aa71fc5409385d60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movingSpeed: 1
+  checkDistance: 0.1
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 8
+  useGroundCheck: 1
+  groundCheck: {fileID: 303194024}
+  useWallCheck: 1
+  wallCheck: {fileID: 729565775}
+  debugMode: 1
+  initialDirectionRight: 0
+--- !u!50 &263319666
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 263319661}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 6
 --- !u!1 &264014473
 GameObject:
   m_ObjectHideFlags: 0
@@ -2942,11 +2996,11 @@ Transform:
   m_GameObject: {fileID: 303194023}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.35, y: -0.4, z: 0}
+  m_LocalPosition: {x: -0.35, y: -0.2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 817115431}
+  m_Father: {fileID: 263319663}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &322124988
 GameObject:
@@ -2973,11 +3027,11 @@ Transform:
   m_GameObject: {fileID: 322124988}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.35, y: -0.4, z: 0}
+  m_LocalPosition: {x: -0.35, y: -0.2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1573923800}
+  m_Father: {fileID: 484307922}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &484307919
 GameObject:
@@ -2990,6 +3044,8 @@ GameObject:
   - component: {fileID: 484307922}
   - component: {fileID: 484307921}
   - component: {fileID: 484307920}
+  - component: {fileID: 484307923}
+  - component: {fileID: 484307924}
   m_Layer: 0
   m_Name: Enemy (Slime) 2
   m_TagString: Untagged
@@ -3110,9 +3166,61 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 322124989}
+  - {fileID: 244276925}
   m_Father: {fileID: 1573923800}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &484307923
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 484307919}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d81702672a65b294aa71fc5409385d60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movingSpeed: 1
+  checkDistance: 0.1
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 8
+  useGroundCheck: 1
+  groundCheck: {fileID: 322124989}
+  useWallCheck: 1
+  wallCheck: {fileID: 244276925}
+  debugMode: 0
+  initialDirectionRight: 0
+--- !u!50 &484307924
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 484307919}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 6
 --- !u!1 &581115189
 GameObject:
   m_ObjectHideFlags: 0
@@ -3189,6 +3297,7 @@ GameObject:
   - component: {fileID: 600119973}
   - component: {fileID: 600119972}
   - component: {fileID: 600119974}
+  - component: {fileID: 600119975}
   m_Layer: 0
   m_Name: Obstacle (Fire) 1
   m_TagString: Untagged
@@ -3312,6 +3421,22 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.71, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &600119975
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 600119971}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57fae338004f9894ea54de1321aaf694, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pointA: {fileID: 1595496234}
+  pointB: {fileID: 253348513}
+  movingSpeed: 1
+  waitTime: 0
 --- !u!1 &637701544
 GameObject:
   m_ObjectHideFlags: 0
@@ -3428,7 +3553,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 817115431}
+  m_Father: {fileID: 263319663}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &817115430
 GameObject:
@@ -3460,8 +3585,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 263319663}
-  - {fileID: 303194024}
-  - {fileID: 729565775}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &876511713
@@ -3736,6 +3859,7 @@ GameObject:
   - component: {fileID: 1158644562}
   - component: {fileID: 1158644561}
   - component: {fileID: 1158644560}
+  - component: {fileID: 1158644563}
   m_Layer: 0
   m_Name: Obstacle (Fire) 5
   m_TagString: Untagged
@@ -3859,6 +3983,22 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1850379849}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1158644563
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1158644559}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57fae338004f9894ea54de1321aaf694, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pointA: {fileID: 876511714}
+  pointB: {fileID: 2140374292}
+  movingSpeed: 1
+  waitTime: 0
 --- !u!1 &1208029812
 GameObject:
   m_ObjectHideFlags: 0
@@ -3915,6 +4055,7 @@ GameObject:
   - component: {fileID: 1215507959}
   - component: {fileID: 1215507958}
   - component: {fileID: 1215507957}
+  - component: {fileID: 1215507960}
   m_Layer: 0
   m_Name: Obstacle (Fire) 3
   m_TagString: Untagged
@@ -4038,6 +4179,22 @@ Transform:
   m_Children: []
   m_Father: {fileID: 592636986}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1215507960
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1215507956}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57fae338004f9894ea54de1321aaf694, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pointA: {fileID: 1338848023}
+  pointB: {fileID: 264014474}
+  movingSpeed: 1
+  waitTime: 0
 --- !u!1 &1268314815
 GameObject:
   m_ObjectHideFlags: 0
@@ -4049,6 +4206,7 @@ GameObject:
   - component: {fileID: 1268314818}
   - component: {fileID: 1268314817}
   - component: {fileID: 1268314816}
+  - component: {fileID: 1268314819}
   m_Layer: 0
   m_Name: Obstacle (Fire) 4
   m_TagString: Untagged
@@ -4172,6 +4330,22 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1362660704}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1268314819
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1268314815}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57fae338004f9894ea54de1321aaf694, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pointA: {fileID: 1818501388}
+  pointB: {fileID: 581115190}
+  movingSpeed: 1
+  waitTime: 0
 --- !u!1 &1338848022
 GameObject:
   m_ObjectHideFlags: 0
@@ -4214,6 +4388,7 @@ GameObject:
   - component: {fileID: 1354064965}
   - component: {fileID: 1354064964}
   - component: {fileID: 1354064966}
+  - component: {fileID: 1354064967}
   m_Layer: 0
   m_Name: Coin
   m_TagString: Untagged
@@ -4328,6 +4503,20 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 0.52, y: 0.52}
   m_Direction: 0
+--- !u!114 &1354064967
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1354064963}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0f1de8982f476d4db223ee005bacb50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  floatAmplitude: 0.125
+  floatFrequency: 2
 --- !u!1 &1362660703
 GameObject:
   m_ObjectHideFlags: 0
@@ -4607,8 +4796,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 484307922}
-  - {fileID: 322124989}
-  - {fileID: 244276925}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1595496233
@@ -4718,6 +4905,7 @@ GameObject:
   - component: {fileID: 2031630566}
   - component: {fileID: 2031630565}
   - component: {fileID: 2031630564}
+  - component: {fileID: 2031630567}
   m_Layer: 0
   m_Name: Obstacle (Fire) 2
   m_TagString: Untagged
@@ -4841,6 +5029,22 @@ Transform:
   m_Children: []
   m_Father: {fileID: 31444785}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2031630567
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2031630563}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57fae338004f9894ea54de1321aaf694, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pointA: {fileID: 1027110211}
+  pointB: {fileID: 1126998309}
+  movingSpeed: 1
+  waitTime: 0
 --- !u!1 &2108331857
 GameObject:
   m_ObjectHideFlags: 0
