@@ -2304,6 +2304,7 @@ GameObject:
   - component: {fileID: 600119972}
   - component: {fileID: 600119974}
   - component: {fileID: 600119975}
+  - component: {fileID: 600119976}
   m_Layer: 0
   m_Name: Obstacle (Fire) 1
   m_TagString: Untagged
@@ -2442,7 +2443,23 @@ MonoBehaviour:
   pointA: {fileID: 293621946}
   pointB: {fileID: 759709397}
   movingSpeed: 1
-  waitTime: 1
+  waitTime: 0
+--- !u!114 &600119976
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 600119971}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa0dde1585b14a84d9e30a3b456ec432, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  frames:
+  - {fileID: 6035477124656669715, guid: 6e4026b23133e5842b8abc772fa9754d, type: 3}
+  - {fileID: 2608534806445164875, guid: 8612077395c9e3d419ddf845644326cd, type: 3}
+  frameRate: 0.15
 --- !u!1 &637701544
 GameObject:
   m_ObjectHideFlags: 0
@@ -2944,6 +2961,7 @@ GameObject:
   - component: {fileID: 903902505}
   - component: {fileID: 903902504}
   - component: {fileID: 903902506}
+  - component: {fileID: 903902507}
   m_Layer: 0
   m_Name: Flag
   m_TagString: Untagged
@@ -3067,6 +3085,24 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.55, y: 0.71}
   m_EdgeRadius: 0
+--- !u!114 &903902507
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 903902503}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa0dde1585b14a84d9e30a3b456ec432, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  frames:
+  - {fileID: -427729727562370211, guid: 3fcf464eb05fb924290aa1905a1a1cd2, type: 3}
+  - {fileID: -7859989469093957295, guid: 5c958b4e6a98b5e4eac45b198500dcdb, type: 3}
+  - {fileID: -584585008233743951, guid: b6a60f024197d8045a6183ed81fd05f7, type: 3}
+  - {fileID: 4833156201327566883, guid: 868ee032511e67649b8317f7149e2de6, type: 3}
+  frameRate: 0.2
 --- !u!1 &978199746
 GameObject:
   m_ObjectHideFlags: 0
@@ -4255,6 +4291,7 @@ GameObject:
   - component: {fileID: 2138830903}
   - component: {fileID: 2138830902}
   - component: {fileID: 2138830905}
+  - component: {fileID: 2138830906}
   m_Layer: 0
   m_Name: Obstacle (Fire) 2
   m_TagString: Untagged
@@ -4393,7 +4430,23 @@ MonoBehaviour:
   pointA: {fileID: 1465624114}
   pointB: {fileID: 596572825}
   movingSpeed: 1
-  waitTime: 1
+  waitTime: 0
+--- !u!114 &2138830906
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2138830901}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa0dde1585b14a84d9e30a3b456ec432, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  frames:
+  - {fileID: 6035477124656669715, guid: 6e4026b23133e5842b8abc772fa9754d, type: 3}
+  - {fileID: 2608534806445164875, guid: 8612077395c9e3d419ddf845644326cd, type: 3}
+  frameRate: 0.15
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

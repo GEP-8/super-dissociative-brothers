@@ -1901,6 +1901,7 @@ GameObject:
   - component: {fileID: 263319664}
   - component: {fileID: 263319665}
   - component: {fileID: 263319666}
+  - component: {fileID: 263319667}
   m_Layer: 0
   m_Name: Enemy (Slime)
   m_TagString: Untagged
@@ -1962,7 +1963,7 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
+  m_SpriteSortPoint: 1
 --- !u!4 &263319663
 Transform:
   m_ObjectHideFlags: 0
@@ -1972,7 +1973,7 @@ Transform:
   m_GameObject: {fileID: 263319661}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -0.23, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2013,10 +2014,10 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: 0.23}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0.5, y: 0}
     oldSize: {x: 0.61, y: 0.46}
     newSize: {x: 0.61, y: 0.46}
     adaptiveTilingThreshold: 0.5
@@ -2075,6 +2076,23 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 6
+--- !u!114 &263319667
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 263319661}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0daa4b25645bb2743ac4a3a36f5da09b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  frames:
+  - {fileID: -5822370736333308498, guid: 6addb5af0cabf1f4eac7612df913f6c3, type: 3}
+  - {fileID: -386055511330649722, guid: f6ba9e085209cae4c8001bb1e7457994, type: 3}
+  frameRate: 0.5
+  col: {fileID: 263319664}
 --- !u!1 &511803203
 GameObject:
   m_ObjectHideFlags: 0
@@ -2284,6 +2302,7 @@ GameObject:
   - component: {fileID: 600119974}
   - component: {fileID: 600119975}
   - component: {fileID: 600119976}
+  - component: {fileID: 600119977}
   m_Layer: 0
   m_Name: Obstacle (Fire)
   m_TagString: Untagged
@@ -2458,6 +2477,22 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 6
+--- !u!114 &600119977
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 600119971}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa0dde1585b14a84d9e30a3b456ec432, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  frames:
+  - {fileID: 6035477124656669715, guid: 6e4026b23133e5842b8abc772fa9754d, type: 3}
+  - {fileID: 2608534806445164875, guid: 8612077395c9e3d419ddf845644326cd, type: 3}
+  frameRate: 0.15
 --- !u!1 &637701544
 GameObject:
   m_ObjectHideFlags: 0
@@ -2556,6 +2591,7 @@ GameObject:
   - component: {fileID: 903902505}
   - component: {fileID: 903902504}
   - component: {fileID: 903902506}
+  - component: {fileID: 903902507}
   m_Layer: 0
   m_Name: Flag
   m_TagString: Untagged
@@ -2679,6 +2715,24 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.55, y: 0.71}
   m_EdgeRadius: 0
+--- !u!114 &903902507
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 903902503}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa0dde1585b14a84d9e30a3b456ec432, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  frames:
+  - {fileID: -427729727562370211, guid: 3fcf464eb05fb924290aa1905a1a1cd2, type: 3}
+  - {fileID: -7859989469093957295, guid: 5c958b4e6a98b5e4eac45b198500dcdb, type: 3}
+  - {fileID: -584585008233743951, guid: b6a60f024197d8045a6183ed81fd05f7, type: 3}
+  - {fileID: 4833156201327566883, guid: 868ee032511e67649b8317f7149e2de6, type: 3}
+  frameRate: 0.2
 --- !u!1 &1208029812
 GameObject:
   m_ObjectHideFlags: 0
@@ -3167,7 +3221,7 @@ Transform:
   m_GameObject: {fileID: 1679373104}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.35, y: 0, z: 0}
+  m_LocalPosition: {x: -0.35, y: 0.23, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
