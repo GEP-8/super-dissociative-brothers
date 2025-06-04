@@ -2874,10 +2874,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 463059bec966db14794506a3464fbe7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainSceneName: MainTitleScene
-  howtoplaySceneName: 
-  nextSceneName: 
-  previousSceneName: 
+  transitionManager: {fileID: 0}
 --- !u!4 &2034445275
 Transform:
   m_ObjectHideFlags: 0

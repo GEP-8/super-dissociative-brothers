@@ -3,28 +3,26 @@ using UnityEngine.SceneManagement;
 
 public class PageController : MonoBehaviour
 {
-    [SerializeField] private string mainSceneName;
-    [SerializeField] private string howtoplaySceneName;
-    [SerializeField] private string nextSceneName;
-    [SerializeField] private string previousSceneName;
+	[SerializeField] private TransitionOut transitionManager;
 
-    public void GoToHowToPlayScene()
-    {
-        SceneManager.LoadScene("HowToPlayScene_1");
-    }
+	public void GoToHowToPlayScene()
+	{
+		transitionManager.StartSceneTransition("HowToPlayScene_1");
+	}
 
-    public void GoToNextScene()
-    {
-        SceneManager.LoadScene("HowToPlayScene_2");
-    }
+	public void GoToMainScene()
+	{
+		transitionManager.StartSceneTransition("MainTitleScene");
+	}
 
-    public void GoToPreviousScene()
-    {
-        SceneManager.LoadScene("HowToPlayScene_3");
-    }
+	// 아래는 기존 방식 유지
+	public void GoToNextScene()
+	{
+		SceneManager.LoadScene("HowToPlayScene_2");
+	}
 
-    public void GoToMainScene()
-    {
-        SceneManager.LoadScene("MainTitleScene");
-    }
+	public void GoToPreviousScene()
+	{
+		SceneManager.LoadScene("HowToPlayScene_3");
+	}
 }

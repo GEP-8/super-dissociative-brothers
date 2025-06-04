@@ -2855,8 +2855,6 @@ MonoBehaviour:
   howtoplaySceneName: 
   nextSceneName: 
   previousSceneName: 
-  revealController: {fileID: 174015525}
-  transitionObject: {fileID: 174015524}
 --- !u!1 &2086378700
 GameObject:
   m_ObjectHideFlags: 0

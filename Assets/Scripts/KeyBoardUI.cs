@@ -3,8 +3,6 @@ using UnityEngine.UI;
 using UnityEngine.InputSystem;
 
 public class KeyBoardUI : MonoBehaviour
-
-    // 테스트용 주석입니다.
 {
     public Image up;
     public Image down;
