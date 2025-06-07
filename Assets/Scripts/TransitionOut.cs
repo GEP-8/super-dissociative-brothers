@@ -1,0 +1,39 @@
+using System.Collections;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+
+public class TransitionOut : MonoBehaviour
+{
+	[SerializeField] private RectTransform blackScreen;
+	[SerializeField] private float transitionDuration = 1.0f;
+	[SerializeField] private AnimationCurve transitionCurve;
+
+	private bool isTransitioning = false;
+
+	public void StartSceneTransition(string sceneName)
+	{
+		if (!isTransitioning)
+			StartCoroutine(TransitionAndLoadScene(sceneName));
+	}
+
+	private IEnumerator TransitionAndLoadScene(string sceneName)
+	{
+		isTransitioning = true;
+
+		Vector2 startPos = blackScreen.anchoredPosition;
+		Vector2 endPos = Vector2.zero;
+
+		float elapsed = 0f;
+
+		while (elapsed < transitionDuration)
+		{
+			elapsed += Time.deltaTime;
+			float t = Mathf.Clamp01(elapsed / transitionDuration);
+			float curveT = transitionCurve.Evaluate(t);
+			blackScreen.anchoredPosition = Vector2.Lerp(startPos, endPos, curveT);
+			yield return null;
+		}
+
+		SceneManager.LoadScene(sceneName);
+	}
+}
