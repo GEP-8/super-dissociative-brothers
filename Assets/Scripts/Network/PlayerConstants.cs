@@ -1,10 +1,12 @@
 ﻿namespace Network {
-    public enum PlayerAction {
+    public enum PlayerAction
+    {
         RightMove,
         LeftMove,
         UpMove,
         DownMove,
-        Jump
+        Jump,
+        Crouch
     }
 
     public enum MergeStrategy {
