@@ -6,22 +6,22 @@ public class StageSelect : MonoBehaviour
     [SerializeField] private TransitionOut transitionManager;
     public void GoToStage1()
     {
-        transitionManager.StartSceneTransition("StageScene"); //½ºÅ×ÀÌÁö 1 ¾À ÀÌ¸§À¸·Î ¼öÁ¤ ÇÊ¿ä
+        transitionManager.StartSceneTransition("Stage_1"); //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 1 ï¿½ï¿½ ï¿½Ì¸ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ê¿ï¿½
     }
     public void GoToStage2()
     {
-        transitionManager.StartSceneTransition("StageScene"); //½ºÅ×ÀÌÁö 2 ¾À ÀÌ¸§À¸·Î ¼öÁ¤ ÇÊ¿ä
+        transitionManager.StartSceneTransition("Stage_2"); //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 2 ï¿½ï¿½ ï¿½Ì¸ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ê¿ï¿½
     }
     public void GoToStage3()
     {
-        transitionManager.StartSceneTransition("StageScene"); //½ºÅ×ÀÌÁö 3 ¾À ÀÌ¸§À¸·Î ¼öÁ¤ ÇÊ¿ä
+        transitionManager.StartSceneTransition("Stage_3"); //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 3 ï¿½ï¿½ ï¿½Ì¸ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ê¿ï¿½
     }
     public void GoToStage4()
     {
-        transitionManager.StartSceneTransition("StageScene"); //½ºÅ×ÀÌÁö 4 ¾À ÀÌ¸§À¸·Î ¼öÁ¤ ÇÊ¿ä
+        transitionManager.StartSceneTransition("Stage_4"); //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 4 ï¿½ï¿½ ï¿½Ì¸ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ê¿ï¿½
     }
     public void GoToStage5()
     {
-        transitionManager.StartSceneTransition("StageScene"); //½ºÅ×ÀÌÁö 5 ¾À ÀÌ¸§À¸·Î ¼öÁ¤ ÇÊ¿ä
+        transitionManager.StartSceneTransition("Stage_5"); //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 5 ï¿½ï¿½ ï¿½Ì¸ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ê¿ï¿½
     }
 }
