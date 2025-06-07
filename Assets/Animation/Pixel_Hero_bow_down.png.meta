@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Pixel_Hero_bow_down_0: -2210877071016102766
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Pixel_Hero_jump_up_0: 2817857958878247810
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
