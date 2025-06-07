@@ -18,6 +18,9 @@ EditorBuildSettings:
     path: Assets/Scenes/HowToPlayScene_3.unity
     guid: caae6cb2b89d29242ac90097f8229b3f
   - enabled: 1
+    path: Assets/Scenes/LobbyScene.unity
+    guid: 72f1613b46eed334e944846799d19ac1
+  - enabled: 1
     path: Assets/Scenes/StageSelectionScene.unity
     guid: 4b540c30c26adda4692c2c75b8c6ba57
   - enabled: 1
