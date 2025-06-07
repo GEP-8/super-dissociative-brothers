@@ -179,7 +179,7 @@ MonoBehaviour:
   coll: {fileID: 0}
   groundLayer:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 8
   isGrounded: 0
   speed: 2
   jumpForce: 1

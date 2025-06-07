@@ -24,7 +24,6 @@ namespace Network
 
         private void FixedUpdate()
         {
-            CheckGround(); // 바닥에 있는지 확인
             animator.SetBool("isGrounded", isGrounded); // 애니메이터에 바닥 상태 전달 (필요시 추가)
             animator.SetBool("Walkingright", false); // 애니메이션 상태 초기화 (필요시 추가)
             animator.SetBool("Walkingleft", false); // 애니메이션 상태 초기화 (필요시 추가)
@@ -77,22 +76,30 @@ namespace Network
 
             }
         }
-        private void CheckGround()
+        
+        // 충돌이 시작될 때 호출됩니다.
+        private void OnCollisionEnter2D(Collision2D collision)
         {
-            Vector3 origin = new Vector3(transform.position.x, transform.position.y - (transform.localScale.y * .5f), transform.position.z);
-            Vector3 direction = transform.TransformDirection(Vector3.down);
-            float distance = .75f;
-
-            if (Physics.Raycast(origin, direction, out RaycastHit hit, distance))
+            // 충돌한 오브젝트의 레이어가 'GroundLayer'에 포함되는지 확인
+            if (((1 << collision.gameObject.layer) & groundLayer) != 0)
             {
-                Debug.DrawRay(origin, direction * distance, Color.red);
                 isGrounded = true;
-            }
-            else
-            {
-                isGrounded = false;
+                Debug.Log("땅에 닿았습니다!");
             }
         }
+        // 충돌이 끝날 때 호출됩니다.
+        private void OnCollisionExit2D(Collision2D collision)
+        {
+            if (((1 << collision.gameObject.layer) & groundLayer) != 0)
+            {
+                // 주의: 여러 개의 땅 오브젝트와 동시에 닿아있다가 하나만 떨어질 경우 문제가 될 수 있음.
+                // 아래 OverlapCircle 방식과 조합하는 것이 더 정확할 수 있습니다.
+                isGrounded = false;
+                Debug.Log("땅에서 떨어졌습니다!");
+            }
+        }
+        
+        
         private void ShrinkColliderSafely()
         {
             rb.isKinematic = true; // 물리 계산을 잠깐 끔
