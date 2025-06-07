@@ -21,7 +21,8 @@ namespace Network {
             { KeyCode.RightArrow, PlayerAction.RightMove },
             { KeyCode.S, PlayerAction.DownMove },
             { KeyCode.DownArrow, PlayerAction.DownMove },
-            { KeyCode.Space, PlayerAction.Jump }
+            { KeyCode.Space, PlayerAction.Jump },
+            { KeyCode.LeftShift, PlayerAction.Crouch }
         };
 
         public override void OnNetworkSpawn() {
