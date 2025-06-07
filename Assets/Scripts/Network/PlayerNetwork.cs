@@ -24,11 +24,11 @@ namespace Network
             {
                 Instance = this;
             }
-            else
-            {
-                Debug.LogError("PlayerController 인스턴스가 이미 존재합니다! 중복된 인스턴스를 제거합니다.");
-                Destroy(gameObject); // 중복된 인스턴스가 있다면 삭제
-            }
+            // else
+            // {
+            //     Debug.LogError("PlayerController 인스턴스가 이미 존재합니다! 중복된 인스턴스를 제거합니다.");
+            //     Destroy(gameObject); // 중복된 인스턴스가 있다면 삭제
+            // }
         }
 
         public override void OnNetworkSpawn()

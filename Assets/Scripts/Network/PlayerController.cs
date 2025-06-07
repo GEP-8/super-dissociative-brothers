@@ -2,7 +2,6 @@
 
 namespace Network
 {
-    [RequireComponent(typeof(PlayerNetwork))] // 일단은 이렇게 되어있는데 매니저로 빼는게 좋을려나?
     [RequireComponent(typeof(Rigidbody2D))] // Rigidbody가 필요하다면 추가
     public class PlayerController : MonoBehaviour
     {
