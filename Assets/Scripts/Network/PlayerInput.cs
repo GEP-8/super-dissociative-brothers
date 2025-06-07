@@ -13,14 +13,14 @@ namespace Network {
 
 
         public Dictionary<KeyCode, PlayerAction> KeyToActionDictionary { get; } = new() {
-            { KeyCode.W, PlayerAction.UpMove },
-            { KeyCode.UpArrow, PlayerAction.UpMove },
+            { KeyCode.W, PlayerAction.Jump },
+            { KeyCode.UpArrow, PlayerAction.Jump },
             { KeyCode.A, PlayerAction.LeftMove },
             { KeyCode.LeftArrow, PlayerAction.LeftMove },
             { KeyCode.D, PlayerAction.RightMove },
             { KeyCode.RightArrow, PlayerAction.RightMove },
-            { KeyCode.S, PlayerAction.DownMove },
-            { KeyCode.DownArrow, PlayerAction.DownMove },
+            { KeyCode.S, PlayerAction.Crouch },
+            { KeyCode.DownArrow, PlayerAction.Crouch },
             { KeyCode.Space, PlayerAction.Jump },
             { KeyCode.LeftShift, PlayerAction.Crouch }
         };

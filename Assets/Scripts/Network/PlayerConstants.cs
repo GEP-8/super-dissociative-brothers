@@ -3,8 +3,8 @@
     {
         RightMove,
         LeftMove,
-        UpMove,
-        DownMove,
+        // UpMove,
+        // DownMove,
         Jump,
         Crouch
     }

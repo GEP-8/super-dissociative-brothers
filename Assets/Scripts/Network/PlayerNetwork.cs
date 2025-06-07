@@ -61,8 +61,8 @@ namespace Network
                 //tmp for test
                 PlayerAction.RightMove,
                 PlayerAction.LeftMove,
-                PlayerAction.UpMove,
-                PlayerAction.DownMove,
+                // PlayerAction.UpMove,
+                // PlayerAction.DownMove,
                 PlayerAction.Jump,
                 PlayerAction.Crouch
             };
