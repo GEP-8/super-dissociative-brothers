@@ -1,3 +1,5 @@
+using Unity.Netcode;
+
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -6,22 +8,42 @@ public class StageSelect : MonoBehaviour
     [SerializeField] private TransitionOut transitionManager;
     public void GoToStage1()
     {
-        transitionManager.StartSceneTransition("StageScene"); //½ºÅ×ÀÌÁö 1 ¾À ÀÌ¸§À¸·Î ¼öÁ¤ ÇÊ¿ä
+        GoToScene("Stage_1"); //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 1 ï¿½ï¿½ ï¿½Ì¸ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ê¿ï¿½
     }
     public void GoToStage2()
     {
-        transitionManager.StartSceneTransition("StageScene"); //½ºÅ×ÀÌÁö 2 ¾À ÀÌ¸§À¸·Î ¼öÁ¤ ÇÊ¿ä
+        GoToScene("Stage_2"); //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 2 ï¿½ï¿½ ï¿½Ì¸ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ê¿ï¿½
     }
     public void GoToStage3()
     {
-        transitionManager.StartSceneTransition("StageScene"); //½ºÅ×ÀÌÁö 3 ¾À ÀÌ¸§À¸·Î ¼öÁ¤ ÇÊ¿ä
+        GoToScene("Stage_3"); //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 3 ï¿½ï¿½ ï¿½Ì¸ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ê¿ï¿½
     }
     public void GoToStage4()
     {
-        transitionManager.StartSceneTransition("StageScene"); //½ºÅ×ÀÌÁö 4 ¾À ÀÌ¸§À¸·Î ¼öÁ¤ ÇÊ¿ä
+        GoToScene("Stage_4"); //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 4 ï¿½ï¿½ ï¿½Ì¸ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ê¿ï¿½
     }
     public void GoToStage5()
     {
-        transitionManager.StartSceneTransition("StageScene"); //½ºÅ×ÀÌÁö 5 ¾À ÀÌ¸§À¸·Î ¼öÁ¤ ÇÊ¿ä
+        GoToScene("Stage_5"); //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 5 ï¿½ï¿½ ï¿½Ì¸ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ê¿ï¿½
+    }
+
+    private void GoToScene(string sceneName) {
+        
+        if (NetworkManager.Singleton.IsConnectedClient == false) {
+            Debug.LogWarning("ì§„í–‰í•˜ë ¤ë©´ ë¡œë¹„ì— ì°¸ê°€í•´ì•¼ í•©ë‹ˆë‹¤.");
+
+            return;
+        }
+        
+        if (NetworkManager.Singleton.IsServer) // ë˜ëŠ” IsHost
+        {
+            // ì„œë²„ ë˜ëŠ” í˜¸ìŠ¤íŠ¸ë§Œ ì”¬ ì „í™˜ì„ ì‹œì‘í•  ìˆ˜ ìˆìŠµë‹ˆë‹¤.
+            Debug.Log($"ì„œë²„ì—ì„œ {sceneName} ì”¬ ë¡œë“œ ì‹œì‘.");
+            NetworkManager.Singleton.SceneManager.LoadScene(sceneName, LoadSceneMode.Single);
+        }
+        else
+        {
+            Debug.LogWarning("ì”¬ ì „í™˜ì€ ì„œë²„ ë˜ëŠ” í˜¸ìŠ¤íŠ¸ë§Œ í•  ìˆ˜ ìˆìŠµë‹ˆë‹¤.");
+        }
     }
 }

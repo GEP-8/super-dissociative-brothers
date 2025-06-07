@@ -16,7 +16,7 @@ public class PageController : MonoBehaviour
 	}
     public void GoToNetworkConnection()
     {
-        transitionManager.StartSceneTransition("StageSelectionScene"); // ÇÁ·ÎÁ§Æ® ¸ÓÁö ½Ã, ³×Æ®¿öÅ© ¿¬°á ¾ÀÀ¸·Î ¼öÁ¤ ÇÊ¿ä
+        transitionManager.StartSceneTransition("LobbyScene"); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½, ï¿½ï¿½Æ®ï¿½ï¿½Å© ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ê¿ï¿½
     }
 
     public void GoToNextScene()

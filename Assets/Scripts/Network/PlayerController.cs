@@ -2,13 +2,12 @@
 
 namespace Network
 {
-    [RequireComponent(typeof(PlayerNetwork))] // 일단은 이렇게 되어있는데 매니저로 빼는게 좋을려나?
-    [RequireComponent(typeof(Rigidbody))] // Rigidbody가 필요하다면 추가
+    [RequireComponent(typeof(Rigidbody2D))] // Rigidbody가 필요하다면 추가
     public class PlayerController : MonoBehaviour
     {
         private PlayerNetwork playerNetwork;
-        private Rigidbody rb;
-        public BoxCollider coll;
+        private Rigidbody2D rb;
+        public BoxCollider2D coll;
         [SerializeField] private LayerMask groundLayer; // 바닥 레이어를 지정하기 위한 변수
         public bool isGrounded = true; // 바닥에 있는지 여부
         public float speed = 2f; // 이동 속도
@@ -18,8 +17,8 @@ namespace Network
         private void Awake()
         {
             playerNetwork = PlayerNetwork.Instance;
-            rb = GetComponent<Rigidbody>();
-            coll = GetComponent<BoxCollider>();
+            rb = GetComponent<Rigidbody2D>();
+            coll = GetComponent<BoxCollider2D>();
             originalSize = coll.size; // 최초 크기 저장
         }
 
@@ -70,7 +69,7 @@ namespace Network
                     case PlayerAction.Jump:
                         if (isGrounded) // 점프는 바닥에 있을 때만 가능
                         {
-                            rb.AddForce(Vector2.up * jumpForce, ForceMode.Impulse); // 점프를 위해 위쪽으로 힘을 추가
+                            rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse); // 점프를 위해 위쪽으로 힘을 추가
                         }
                         break;
 
@@ -80,24 +79,25 @@ namespace Network
         }
         private void CheckGround()
         {
-            Vector3 origin = new Vector3(transform.position.x, transform.position.y - (transform.localScale.y * .5f), transform.position.z);
-            Vector3 direction = transform.TransformDirection(Vector3.down);
+            Vector2 origin = new Vector2(transform.position.x, transform.position.y - (transform.localScale.y * .5f));
             float distance = .75f;
-
-            if (Physics.Raycast(origin, direction, out RaycastHit hit, distance))
-            {
-                Debug.DrawRay(origin, direction * distance, Color.red);
+            
+            // Raycast를 아래 방향으로 쏴서 groundLayer에 닿는지 확인
+            RaycastHit2D hit = Physics2D.Raycast(origin, Vector2.down, distance, groundLayer);
+            
+            if (hit) {
                 isGrounded = true;
             }
-            else
-            {
+            else {
                 isGrounded = false;
             }
+            Debug.DrawRay(origin, Vector2.down * distance, isGrounded ? Color.green : Color.red);
         }
+        
         private void ShrinkColliderSafely()
         {
             rb.isKinematic = true; // 물리 계산을 잠깐 끔
-            coll.size = new Vector3(coll.size.x, coll.size.y * 0.7f, coll.size.z);
+            coll.size = new Vector2(coll.size.x, coll.size.y * 0.7f);
             Physics.SyncTransforms(); // 변경사항 동기화
             rb.isKinematic = false; // 다시 물리 계산 적용
         }
