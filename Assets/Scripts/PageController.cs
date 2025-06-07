@@ -14,9 +14,12 @@ public class PageController : MonoBehaviour
 	{
 		transitionManager.StartSceneTransition("MainTitleScene");
 	}
+    public void GoToNetworkConnection()
+    {
+        transitionManager.StartSceneTransition("StageSelectionScene"); // 프로젝트 머지 시, 네트워크 연결 씬으로 수정 필요
+    }
 
-	// 아래는 기존 방식 유지
-	public void GoToNextScene()
+    public void GoToNextScene()
 	{
 		SceneManager.LoadScene("HowToPlayScene_2");
 	}

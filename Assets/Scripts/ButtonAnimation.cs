@@ -29,7 +29,6 @@ public class ButtonAnimation : MonoBehaviour
         rectTransform = GetComponent<RectTransform>();
         canvas = GetComponentInParent<Canvas>();
 
-        // Image 컴포넌트 가져오기
         buttonImage = GetComponent<Image>();
         if (buttonImage != null)
         {
@@ -54,20 +53,18 @@ public class ButtonAnimation : MonoBehaviour
                 StartScaleAnimation(originalScale * hoverScale);
             }
 
-            if (Mouse.current.leftButton.isPressed)
+            if (Mouse.current.leftButton.wasPressedThisFrame && !isClicked)
             {
-                if (!isClicked)
-                {
-                    isClicked = true;
-                    StartScaleAnimation(originalScale * clickScale);
-                    StartColorAnimation(clickColor);
-                }
+                isClicked = true;
+                StartScaleAnimation(originalScale * clickScale);
+                StartColorAnimation(clickColor);
             }
-            else if (isClicked)
+            if (Mouse.current.leftButton.wasReleasedThisFrame && isClicked)
             {
                 isClicked = false;
                 StartScaleAnimation(originalScale * hoverScale);
                 StartColorAnimation(originalColor);
+                AudioManager.Instance?.PlayButtonClick();
             }
         }
         else
