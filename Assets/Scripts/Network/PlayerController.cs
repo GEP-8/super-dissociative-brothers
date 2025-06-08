@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿
+using UnityEngine;
 
 namespace Network
 {
@@ -11,9 +12,10 @@ namespace Network
         [SerializeField] private LayerMask groundLayer; // 바닥 레이어를 지정하기 위한 변수
         public bool isGrounded = true; // 바닥에 있는지 여부
         public float speed = 2f; // 이동 속도
-        public float jumpForce = 2f; // 점프 힘
+        public float jumpForce = 15f; // 점프 힘
         public Animator animator; // 애니메이터 컴포넌트 (필요시 추가)
         private Vector3 originalSize; // 최초 크기를 저장하기 위한 변수
+        public JumpState jumpState = JumpState.Idle; // 점프 상태를 나타내는 변수
         private void Awake()
         {
             playerNetwork = PlayerNetwork.Instance;
@@ -67,11 +69,32 @@ namespace Network
                         animator.SetBool("Walkingleft", true); // 애니메이션 상태 업데이트 (필요시 추가)
                         break;
                     case PlayerAction.Jump:
-                        if (isGrounded) // 점프는 바닥에 있을 때만 가능
+                        Debug.Log("Jump action received");
+                        switch (jumpState)
                         {
-                            rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse); // 점프를 위해 위쪽으로 힘을 추가
-                        }
-                        break;
+                            case JumpState.Idle:
+                                Debug.Log("Jump action in Idle state");
+                                if (isGrounded) // 바닥에 있을 때만 점프 가능
+                                {
+                                    rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse); // 점프 힘 적용
+                                    jumpState = JumpState.JumpUp; // 점프 상태 업데이트
+                                }
+                                break;
+                            case JumpState.JumpUp:
+                                Debug.Log("Jump action in JumpUp state");
+                                if (!isGrounded) // 바닥에 있을 때만 점프 가능
+                                {
+                                    jumpState = JumpState.JumpDown; // 점프 상태 업데이트
+                                }
+                                break;
+                            case JumpState.JumpDown:
+                                Debug.Log("Jump action in JumpDown state");
+                                if (isGrounded) // 바닥에 있을 때만 점프 가능
+                                {
+                                    jumpState = JumpState.Idle; // 점프 상태 업데이트
+                                }
+                                break;
+                        }break;
 
                 }
 
@@ -80,7 +103,7 @@ namespace Network
         private void CheckGround()
         {
             Vector2 origin = new Vector2(transform.position.x, transform.position.y - (transform.localScale.y * .5f));
-            float distance = .75f;
+            float distance = .50f;
             
             // Raycast를 아래 방향으로 쏴서 groundLayer에 닿는지 확인
             RaycastHit2D hit = Physics2D.Raycast(origin, Vector2.down, distance, groundLayer);
@@ -96,10 +119,8 @@ namespace Network
         
         private void ShrinkColliderSafely()
         {
-            rb.isKinematic = true; // 물리 계산을 잠깐 끔
             coll.size = new Vector2(coll.size.x, coll.size.y * 0.7f);
             Physics.SyncTransforms(); // 변경사항 동기화
-            rb.isKinematic = false; // 다시 물리 계산 적용
         }
 
     }
