@@ -42,12 +42,12 @@ Material:
     m_Ints: []
     m_Floats:
     - _EnableExternalAlpha: 0
-    - _Quadrant: 1
+    - _Quadrant: 3
     - _SharedRadius: 0.02
-    - _SplitMode: 1
+    - _SplitMode: 4
     - _ZWrite: 0
     m_Colors:
-    - _CharPos: {r: 0.1349375, g: 0.34640902, b: 0, a: 0}
+    - _CharPos: {r: 0.5226998, g: -1.8672748, b: 0, a: 0}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []

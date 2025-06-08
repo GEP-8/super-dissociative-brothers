@@ -2385,7 +2385,7 @@ GameObject:
   - component: {fileID: 600119976}
   m_Layer: 0
   m_Name: Obstacle (Fire) 1
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3042,7 +3042,7 @@ GameObject:
   - component: {fileID: 903902507}
   m_Layer: 0
   m_Name: Flag
-  m_TagString: Untagged
+  m_TagString: Flag
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3401,7 +3401,7 @@ GameObject:
   - component: {fileID: 1354064967}
   m_Layer: 0
   m_Name: Coin
-  m_TagString: Untagged
+  m_TagString: Pill
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4377,7 +4377,7 @@ GameObject:
   - component: {fileID: 2138830906}
   m_Layer: 0
   m_Name: Obstacle (Fire) 2
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

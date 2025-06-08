@@ -1,39 +1,53 @@
 using UnityEngine;
+using System.Collections;
 
 public class PlayerCollisionHandler : MonoBehaviour
-{   
-    public float collectedPills = 0f; // 플레이어가 수집한 알약의 개수
+{
+    public float collectedPills = 0f;
+
+    [Header("Component References")]
     public Rigidbody2D rb;
-    public Animator animator; // 애니메이터 컴포넌트 (필요시 사용)
-    private BoxCollider2D boxCollider; // 플레이어의 박스 콜라이더
+    public Animator animator;
+    private BoxCollider2D boxCollider;
+
+    [Header("UI")]
+    public RectTransform gameOverUI;
+    public RectTransform clearUI;
+    public Vector2 uiTargetPos = Vector2.zero;
+    public float uiMoveDuration = 1.0f;
+    public AnimationCurve moveCurve;
+
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         boxCollider = GetComponent<BoxCollider2D>();
+
         if (rb == null)
         {
-            Debug.LogError("Rigidbody 컴포넌트가 없습니다. Rigidbody를 추가해주세요.");
+            Debug.LogError("Rigidbody2D 컴포넌트가 없습니다.");
         }
     }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         string tag = collision.gameObject.tag;
-
+        Debug.Log(tag);
         switch (tag)
         {
-            case "Enemy"or "Obstacle":
-                Debug.Log("적과 충돌했습니다! 플레이어 사망.");
-                Die(); // 플레이어 사망
-
+            case "Enemy":
+            case "Obstacle":
+                Debug.Log("적 또는 장애물과 충돌했습니다! 플레이어 사망.");
+                Die();
                 break;
 
             case "Pill":
-                Debug.Log("알약과 충돌했습니다! 알약 수집.");
-                CollectPill(collision.gameObject); // 알약 수집
+                Debug.Log("알약과 충돌했습니다!");
+                CollectPill(collision.gameObject);
                 break;
+
             case "Flag":
-                Debug.Log("플래그에 도달했습니다! 다음 단계로 이동.");
-                // 예: 다음 단계로 이동하는 로직 추가
+                Debug.Log("플래그에 도달했습니다!");
+                StartCoroutine(ShowUIWithCurve(clearUI));
                 break;
         }
     }
@@ -41,17 +55,37 @@ public class PlayerCollisionHandler : MonoBehaviour
     private void Die()
     {
         Debug.Log("플레이어 사망!");
-        // 플레이어 사망 처리 로직 추가
-        animator.SetTrigger("Die"); // 애니메이터 트리거 설정 (필요시 사용)
-        rb.AddForce(Vector2.up * 3f, ForceMode2D.Impulse); // 플레이어를 위로 튕겨내기
+        animator.SetTrigger("Die");
+        rb.AddForce(Vector2.up * 3f, ForceMode2D.Impulse);
         boxCollider.enabled = false;
         rb.constraints = RigidbodyConstraints2D.FreezePositionX;
+
+        StartCoroutine(ShowUIWithCurve(gameOverUI));
     }
 
     private void CollectPill(GameObject pill)
     {
-        Debug.Log("알약 획득!");
-        collectedPills += 1; // 알약 개수 증가
-        Destroy(pill); // 알약 제거
+        collectedPills += 1;
+        Destroy(pill);
+    }
+
+    private IEnumerator ShowUIWithCurve(RectTransform ui)
+    {
+        yield return new WaitForSeconds(1f);
+
+        Vector2 start = ui.anchoredPosition;
+        Vector2 end = uiTargetPos;
+        float elapsed = 0f;
+
+        while (elapsed < uiMoveDuration)
+        {
+            elapsed += Time.deltaTime;
+            float t = Mathf.Clamp01(elapsed / uiMoveDuration);
+            float curvedT = moveCurve.Evaluate(t);
+            ui.anchoredPosition = Vector2.Lerp(start, end, curvedT);
+            yield return null;
+        }
+
+        ui.anchoredPosition = end;
     }
 }

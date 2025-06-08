@@ -1857,7 +1857,7 @@ GameObject:
   - component: {fileID: 263319667}
   m_Layer: 0
   m_Name: Enemy (Slime)
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2061,7 +2061,7 @@ GameObject:
   - component: {fileID: 280991392}
   m_Layer: 0
   m_Name: Obstacle (Fire) 2
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2295,7 +2295,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &334646838
 Transform:
   m_ObjectHideFlags: 0
@@ -3015,7 +3015,7 @@ GameObject:
   - component: {fileID: 600119976}
   m_Layer: 0
   m_Name: Obstacle (Fire) 1
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3377,7 +3377,7 @@ GameObject:
   - component: {fileID: 903902507}
   m_Layer: 0
   m_Name: Flag
-  m_TagString: Untagged
+  m_TagString: Flag
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3640,7 +3640,7 @@ GameObject:
   - component: {fileID: 1354064967}
   m_Layer: 0
   m_Name: Coin
-  m_TagString: Untagged
+  m_TagString: Pill
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4986,6 +4986,10 @@ PrefabInstance:
     - target: {fileID: 5890285279663077528, guid: 8e794684236af8a4b9df9e5de1ca6db8, type: 3}
       propertyPath: m_Name
       value: SceneUI
+      objectReference: {fileID: 0}
+    - target: {fileID: 5890285279663077528, guid: 8e794684236af8a4b9df9e5de1ca6db8, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8202471646027015638, guid: 8e794684236af8a4b9df9e5de1ca6db8, type: 3}
       propertyPath: m_LocalPosition.x

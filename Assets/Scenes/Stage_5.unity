@@ -1809,7 +1809,7 @@ GameObject:
   - component: {fileID: 263319667}
   m_Layer: 0
   m_Name: Enemy (Slime)
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2045,7 +2045,7 @@ GameObject:
   - component: {fileID: 390590279}
   m_Layer: 0
   m_Name: Obstacle (Fire) 4
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2349,7 +2349,7 @@ GameObject:
   - component: {fileID: 600119976}
   m_Layer: 0
   m_Name: Obstacle (Fire) 1
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2550,7 +2550,7 @@ GameObject:
   - component: {fileID: 903902507}
   m_Layer: 0
   m_Name: Flag
-  m_TagString: Untagged
+  m_TagString: Flag
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2867,7 +2867,7 @@ GameObject:
   - component: {fileID: 1089343232}
   m_Layer: 0
   m_Name: Obstacle (Fire) 2
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3113,7 +3113,7 @@ GameObject:
   - component: {fileID: 1186539505}
   m_Layer: 0
   m_Name: Obstacle (Fire) 3
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3356,7 +3356,7 @@ GameObject:
   - component: {fileID: 1354064967}
   m_Layer: 0
   m_Name: Coin
-  m_TagString: Untagged
+  m_TagString: Pill
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3681,7 +3681,7 @@ GameObject:
   - component: {fileID: 1951686042}
   m_Layer: 0
   m_Name: Boss Slime
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
