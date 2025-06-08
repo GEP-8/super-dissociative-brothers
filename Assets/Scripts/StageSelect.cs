@@ -1,49 +1,51 @@
 using Unity.Netcode;
-
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class StageSelect : MonoBehaviour
 {
     [SerializeField] private TransitionOut transitionManager;
-    public void GoToStage1()
-    {
-        GoToScene("Stage_1"); //�������� 1 �� �̸����� ���� �ʿ�
-    }
-    public void GoToStage2()
-    {
-        GoToScene("Stage_2"); //�������� 2 �� �̸����� ���� �ʿ�
-    }
-    public void GoToStage3()
-    {
-        GoToScene("Stage_3"); //�������� 3 �� �̸����� ���� �ʿ�
-    }
-    public void GoToStage4()
-    {
-        GoToScene("Stage_4"); //�������� 4 �� �̸����� ���� �ʿ�
-    }
-    public void GoToStage5()
-    {
-        GoToScene("Stage_5"); //�������� 5 �� �̸����� ���� �ʿ�
-    }
 
-    private void GoToScene(string sceneName) {
-        
-        if (NetworkManager.Singleton.IsConnectedClient == false) {
+    public void GoToStage1() => TryLoadStage("Stage_1");
+    public void GoToStage2() => TryLoadStage("Stage_2");
+    public void GoToStage3() => TryLoadStage("Stage_3");
+    public void GoToStage4() => TryLoadStage("Stage_4");
+    public void GoToStage5() => TryLoadStage("Stage_5");
+
+    private void TryLoadStage(string sceneName)
+    {
+        if (NetworkManager.Singleton.IsConnectedClient == false)
+        {
             Debug.LogWarning("진행하려면 로비에 참가해야 합니다.");
-
             return;
         }
-        
-        if (NetworkManager.Singleton.IsServer) // 또는 IsHost
+
+        if (NetworkManager.Singleton.IsServer)
         {
-            // 서버 또는 호스트만 씬 전환을 시작할 수 있습니다.
-            Debug.Log($"서버에서 {sceneName} 씬 로드 시작.");
-            NetworkManager.Singleton.SceneManager.LoadScene(sceneName, LoadSceneMode.Single);
+            Debug.Log($"서버에서 {sceneName} 씬 로드 준비 중...");
+            StartCoroutine(LoadSceneWithTransition(sceneName));
         }
         else
         {
             Debug.LogWarning("씬 전환은 서버 또는 호스트만 할 수 있습니다.");
         }
+    }
+
+    private IEnumerator LoadSceneWithTransition(string sceneName)
+    {
+        if (transitionManager != null)
+        {
+            bool isDone = false;
+
+            transitionManager.StartSceneTransition(sceneName, () =>
+            {
+                isDone = true;
+            });
+
+            yield return new WaitUntil(() => isDone);
+        }
+
+        NetworkManager.Singleton.SceneManager.LoadScene(sceneName, LoadSceneMode.Single);
     }
 }

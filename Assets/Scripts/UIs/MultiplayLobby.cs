@@ -1,5 +1,5 @@
 using Unity.Netcode;
-
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -8,18 +8,18 @@ public class MultiplayLobby : MonoBehaviour
     [SerializeField] private TransitionOut transitionManager;
     public void GoStageSelectScene()
     {
-        
-        if (NetworkManager.Singleton.IsConnectedClient == false) {
+        if (NetworkManager.Singleton.IsConnectedClient == false)
+        {
             Debug.LogWarning("진행하려면 로비에 참가해야 합니다.");
-
             return;
         }
-        
-        if (NetworkManager.Singleton.IsServer) // 또는 IsHost
+
+        if (NetworkManager.Singleton.IsServer)
         {
-            // 서버 또는 호스트만 씬 전환을 시작할 수 있습니다.
-            Debug.Log($"서버에서 StageSelectionScene 씬 로드 시작.");
-            NetworkManager.Singleton.SceneManager.LoadScene("StageSelectionScene", LoadSceneMode.Single);
+            Debug.Log($"서버에서 StageSelectionScene 씬 로드 준비 중...");
+
+            // 트랜지션 + 씬 로딩 수행
+            StartCoroutine(LoadSceneWithTransition("StageSelectionScene"));
         }
         else
         {
@@ -33,6 +33,26 @@ public class MultiplayLobby : MonoBehaviour
 
             return;
         }
-        transitionManager.StartSceneTransition("MainTitleScene"); //�������� 1 �� �̸����� ���� �ʿ�
+        transitionManager.StartSceneTransition("MainTitleScene");
+    }
+
+    private IEnumerator LoadSceneWithTransition(string sceneName)
+    {
+        if (transitionManager != null)
+        {
+            bool isDone = false;
+
+            // 콜백을 통해 트랜지션 완료 후 로딩
+            transitionManager.StartSceneTransition(sceneName, () =>
+            {
+                isDone = true;
+            });
+
+            // 콜백 완료 대기
+            yield return new WaitUntil(() => isDone);
+        }
+
+        // 트랜지션 완료 후 네트워크 씬 로딩
+        NetworkManager.Singleton.SceneManager.LoadScene(sceneName, LoadSceneMode.Single);
     }
 }
