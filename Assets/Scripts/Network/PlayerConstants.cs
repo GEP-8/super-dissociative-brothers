@@ -8,6 +8,14 @@
         Jump,
         Crouch
     }
+    
+
+    public enum JumpState
+    {
+        Idle,
+        JumpUp,
+        JumpDown
+    }
 
     public enum MergeStrategy {
         Latest
