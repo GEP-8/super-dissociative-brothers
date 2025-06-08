@@ -13,7 +13,7 @@ TagManager:
   - UI
   - 
   - Ground
-  - 
+  - Split Vision
   - 
   - 
   - 
@@ -46,6 +46,9 @@ TagManager:
     locked: 0
   - name: Object
     uniqueID: 2786611449
+    locked: 0
+  - name: Vision
+    uniqueID: 1381251097
     locked: 0
   m_RenderingLayers:
   - Default

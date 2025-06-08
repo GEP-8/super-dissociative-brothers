@@ -356,6 +356,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 27aaa0aa8dc0ec3438ce932b1f3cef92, type: 3}
+--- !u!4 &71086685 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3972642559401101983, guid: 27aaa0aa8dc0ec3438ce932b1f3cef92, type: 3}
+  m_PrefabInstance: {fileID: 71086684}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &145620849
 GameObject:
   m_ObjectHideFlags: 0
@@ -4200,6 +4205,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2108331858}
+  - component: {fileID: 2108331859}
   m_Layer: 0
   m_Name: Backgrounds
   m_TagString: Untagged
@@ -4223,6 +4229,20 @@ Transform:
   - {fileID: 145620851}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2108331859
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2108331857}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6ffff557895cbc40a5e9d053486f74b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 71086685}
+  parallaxSpeed: 0.6
 --- !u!1 &2131578586
 GameObject:
   m_ObjectHideFlags: 0
