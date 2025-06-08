@@ -1,34 +1,33 @@
+using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class StageController : MonoBehaviour
 {
-    [SerializeField] private TransitionOut transitionManager;
-
     public void GoToStageSelect()
     {
-        Debug.Log("¿Ãµø");
-        SceneManager.LoadScene("StageSelectionScene");
+        NetworkManager.Singleton.SceneManager.LoadScene("StageSelectionScene", LoadSceneMode.Single);
     }
 
     public void GoToStage1()
     {
-        transitionManager.StartSceneTransition("Stage_1");
+        NetworkManager.Singleton.SceneManager.LoadScene("Stage_1", LoadSceneMode.Single);
     }
     public void GoToStage2()
     {
-        transitionManager.StartSceneTransition("Stage_2");
+        NetworkManager.Singleton.SceneManager.LoadScene("Stage_2", LoadSceneMode.Single);
     }
     public void GoToStage3()
     {
-        transitionManager.StartSceneTransition("Stage_3");
+        NetworkManager.Singleton.SceneManager.LoadScene("Stage_3", LoadSceneMode.Single);
     }
     public void GoToStage4()
     {
-        transitionManager.StartSceneTransition("Stage_4");
+        NetworkManager.Singleton.SceneManager.LoadScene("Stage_4", LoadSceneMode.Single);
     }
     public void GoToStage5()
     {
-        transitionManager.StartSceneTransition("Stage_5");
+        NetworkManager.Singleton.SceneManager.LoadScene("Stage_5", LoadSceneMode.Single);
     }
 }
+

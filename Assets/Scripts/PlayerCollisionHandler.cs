@@ -31,7 +31,7 @@ public class PlayerCollisionHandler : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         string tag = collision.gameObject.tag;
-        Debug.Log(tag);
+
         switch (tag)
         {
             case "Enemy":

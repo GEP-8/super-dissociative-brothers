@@ -2300,7 +2300,8 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 3727732235104932307, guid: 8e794684236af8a4b9df9e5de1ca6db8, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8e794684236af8a4b9df9e5de1ca6db8, type: 3}
@@ -2312,11 +2313,6 @@ RectTransform:
 --- !u!224 &345586705 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4312773753284857965, guid: 8e794684236af8a4b9df9e5de1ca6db8, type: 3}
-  m_PrefabInstance: {fileID: 345586703}
-  m_PrefabAsset: {fileID: 0}
---- !u!224 &345586706 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 7498203460962149369, guid: 8e794684236af8a4b9df9e5de1ca6db8, type: 3}
   m_PrefabInstance: {fileID: 345586703}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &511803203
@@ -3383,7 +3379,7 @@ GameObject:
   - component: {fileID: 1519311576}
   m_Layer: 0
   m_Name: Fall Zone
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3418,7 +3414,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -3443,7 +3439,7 @@ Transform:
   m_GameObject: {fileID: 1519311575}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 21.5, y: -4.5, z: 0}
+  m_LocalPosition: {x: 21.5, y: -5.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3890,7 +3886,7 @@ PrefabInstance:
     - target: {fileID: 4847573034375358109, guid: dae15474f3c8df344b7b7eba159a5dae, type: 3}
       propertyPath: blackScreen
       value: 
-      objectReference: {fileID: 345586706}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
