@@ -3,7 +3,7 @@ using UnityEngine;
 public class QuadrantVisionController : MonoBehaviour
 {
     public Material quadrantMaterial;
-    public int quadrantIndex = 1; // 1~4
+    public int quadrantIndex = 1; // PlayerVisionManager에서 설정됨
     public Transform character;
     public Camera fixedCamera;
     
