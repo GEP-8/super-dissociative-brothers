@@ -5,73 +5,39 @@ using UnityEngine.UI;
 
 public class PlayerVisionManager : MonoBehaviour
 {
-    public List<RawImage> playerViews; // 인스펙터에서 미리 RawImage를 4개 등록
-    public List<QuadrantVisionController> visionControllers; // 인스펙터에서 미리 QuadrantVisionController를 4개 등록
+    public RawImage fullScreenView; // 전체 화면을 차지하는 단일 RawImage
+    public QuadrantVisionController visionController; // 단일 컨트롤러
     public float sharedRadius = 0.15f;
-    private int myIndex;
 
-    public void SetupVision(int playerCount)
+    private int myPlayerIndex;
+    private int playerCount;
+
+    void Start()
     {
-        switch (playerCount)
+        playerCount = NetworkManager.Singleton.ConnectedClients.Count;
+        Debug.Log($"Connected Players: {playerCount}");
+
+        myPlayerIndex = GetMyPlayerIndex();
+        Debug.Log($"My Player Index: {myPlayerIndex}");
+
+        SetupVision();
+    }
+
+    void SetupVision()
+    {
+        // 전체 화면 설정
+        SetRectTransform(fullScreenView.rectTransform, new Vector2(0, 0), new Vector2(1, 1));
+        fullScreenView.uvRect = new Rect(0, 0, 1, 1);
+
+        // 비전 컨트롤러 설정
+        if (visionController && visionController.quadrantMaterial)
         {
-            case 1:
-                SetRectTransform(playerViews[0].rectTransform, new Vector2(0, 0), new Vector2(1, 1));
-                playerViews[0].uvRect = new Rect(0, 0, 1, 1);
-                //ActivateViews(1);
-                break;
+            // 플레이어 인덱스 기반으로 Quadrant 설정 (1부터 시작)
+            visionController.quadrantIndex = myPlayerIndex + 1;
 
-            case 2:
-                // Player 1 (좌측)
-                SetRectTransform(playerViews[0].rectTransform, new Vector2(0, 0), new Vector2(0.5f, 1));
-                playerViews[0].uvRect = new Rect(0, 0, 0.5f, 1);
-                // Player 2 (우측)
-                SetRectTransform(playerViews[1].rectTransform, new Vector2(0.5f, 0), new Vector2(1, 1));
-                playerViews[1].uvRect = new Rect(0.5f, 0, 0.5f, 1);
-                //ActivateViews(2);
-                break;
-
-            case 3:
-                // Player 1 (좌상)
-                SetRectTransform(playerViews[0].rectTransform, new Vector2(0, 0.5f), new Vector2(0.5f, 1));
-                playerViews[0].uvRect = new Rect(0, 0.5f, 0.5f, 0.5f);
-                // Player 2 (우상)
-                SetRectTransform(playerViews[1].rectTransform, new Vector2(0.5f, 0.5f), new Vector2(1, 1));
-                playerViews[1].uvRect = new Rect(0.5f, 0.5f, 0.5f, 0.5f);
-                // Player 3 (하단 전체 - 2영역)
-                SetRectTransform(playerViews[2].rectTransform, new Vector2(0, 0), new Vector2(1, 0.5f));
-                playerViews[2].uvRect = new Rect(0, 0, 1, 0.5f);
-                //ActivateViews(3);
-                break;
-
-            case 4:
-                // 좌상, 우상, 좌하, 우하
-                SetRectTransform(playerViews[0].rectTransform, new Vector2(0, 0.5f), new Vector2(0.5f, 1));
-                playerViews[0].uvRect = new Rect(0, 0.5f, 0.5f, 0.5f);
-
-                SetRectTransform(playerViews[1].rectTransform, new Vector2(0.5f, 0.5f), new Vector2(1, 1));
-                playerViews[1].uvRect = new Rect(0.5f, 0.5f, 0.5f, 0.5f);
-
-                SetRectTransform(playerViews[2].rectTransform, new Vector2(0, 0), new Vector2(0.5f, 0.5f));
-                playerViews[2].uvRect = new Rect(0, 0, 0.5f, 0.5f);
-
-                SetRectTransform(playerViews[3].rectTransform, new Vector2(0.5f, 0), new Vector2(1, 0.5f));
-                playerViews[3].uvRect = new Rect(0.5f, 0, 0.5f, 0.5f);
-
-                //ActivateViews(4);
-                break;
-        }
-
-        // 현재 플레이어의 인덱스를 가져옴
-        ActivateViews(myIndex);
-
-        // SplitMode를 각 컨트롤러의 Material에 직접 전달
-        foreach (var ctrl in visionControllers)
-        {
-            if (ctrl && ctrl.quadrantMaterial)
-            {
-                ctrl.quadrantMaterial.SetFloat("_SplitMode", playerCount);
-                ctrl.quadrantMaterial.SetFloat("_SharedRadius", sharedRadius);
-            }
+            // 현재 플레이어 수에 따른 분할 모드 설정
+            visionController.quadrantMaterial.SetFloat("_SplitMode", playerCount);
+            visionController.quadrantMaterial.SetFloat("_SharedRadius", sharedRadius);
         }
     }
 
@@ -84,15 +50,6 @@ public class PlayerVisionManager : MonoBehaviour
         rt.sizeDelta = Vector2.zero;
     }
 
-    void ActivateViews(int myIndex)
-    {
-        for (int i = 0; i < playerViews.Count; i++)
-        {
-            // playerViews[i].gameObject.SetActive(i < count);
-            playerViews[i].gameObject.SetActive(i == myIndex);
-        }
-    }
-
     int GetMyPlayerIndex()
     {
         var myId = NetworkManager.Singleton.LocalClientId;
@@ -100,15 +57,4 @@ public class PlayerVisionManager : MonoBehaviour
         keys.Sort();
         return keys.IndexOf(myId);
     }
-
-    void Start()
-    {
-        int playerCount = NetworkManager.Singleton.ConnectedClients.Count;
-        Debug.Log($"Connected Players: {playerCount}");
-        GetComponent<PlayerVisionManager>().SetupVision(playerCount);
-
-        int myIndex = GetMyPlayerIndex();
-        Debug.Log($"My Player Index: {myIndex}");
-    }
-
 }
