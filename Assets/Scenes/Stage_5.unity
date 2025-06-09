@@ -2338,7 +2338,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5251468421781873058, guid: 36e1f2ddc9ce81a49aef5f79d433b3ba, type: 3}
       propertyPath: movingSpeed
-      value: 0.9
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 5251468421781873058, guid: 36e1f2ddc9ce81a49aef5f79d433b3ba, type: 3}
       propertyPath: useWallCheck

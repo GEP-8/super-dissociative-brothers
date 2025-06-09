@@ -69,6 +69,13 @@ namespace Network
             }
         }
 
+        public void ShiftAllowedActions(int shift) {
+            for (int i = 0; i < clientIds.Count; i++) {
+                AllowedActionsDictionary[clientIds[i]] = PlayerConstants.keyDistribution[clientIds.Count][(i + shift) % (clientIds.Count)];
+                SyncAllowedActions(clientIds[i]);
+            }
+        }
+
         private void SyncAllowedActions(ulong clientId)
         {
             // TODO: if문 중첩 해결 && 좀더 간단하게 call하는 방법 찾기... 자료가 잘 없어서 힘드네
