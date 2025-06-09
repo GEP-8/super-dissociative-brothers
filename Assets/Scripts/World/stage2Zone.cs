@@ -4,9 +4,14 @@ using UnityEngine;
 public class stage2EnterZone : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other) {
-        PlayerNetwork.Instance.ShiftAllowedActions(1);
+        if (other.CompareTag("Player")) {
+            PlayerNetwork.Instance.ShiftAllowedActions(1);
+        }
     }
+
     private void OnTriggerExit(Collider other) {
-        PlayerNetwork.Instance.ShiftAllowedActions(0);
+        if (other.CompareTag("Player")) {
+            PlayerNetwork.Instance.ShiftAllowedActions(0);
+        }
     }
 }
