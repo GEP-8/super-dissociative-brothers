@@ -70,8 +70,10 @@ namespace Network
         }
 
         public void ShiftAllowedActions(int shift) {
+            
             for (int i = 0; i < clientIds.Count; i++) {
                 AllowedActionsDictionary[clientIds[i]] = PlayerConstants.keyDistribution[clientIds.Count][(i + shift) % (clientIds.Count)];
+                ActionStatusDictionary[clientIds[i]] = new Dictionary<PlayerAction, bool>();
                 SyncAllowedActions(clientIds[i]);
             }
         }

@@ -62,7 +62,7 @@ namespace Network {
             _allowedActions = actions;
             Array.Fill(_allowedActionsStatus, false);
 
-            Debug.Log(
+            Debug.LogWarning(
                 $"클라이언트 {NetworkManager.Singleton.LocalClientId}가 허용된 액션 목록을 받았습니다: {string.Join(", ", _allowedActions)}");
         }
 
