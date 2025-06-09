@@ -18,7 +18,6 @@ public class KeyBoardUI : MonoBehaviour
     private readonly byte activeAlpha = 255;
     
     void Update() {
-        Debug.LogWarning(Network.PlayerInput.Instance);
         if (Network.PlayerInput.Instance) { // 이렇게 하면 안되는데;;;;
             foreach (PlayerAction action in Network.PlayerInput.Instance._allowedActions) {
                 switch (action) {
