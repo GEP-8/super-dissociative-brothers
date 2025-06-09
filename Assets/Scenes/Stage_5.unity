@@ -2136,7 +2136,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2871976680458827723, guid: 11933265c6e0a6046a1bb52a914d484a, type: 3}
       propertyPath: movingSpeed
-      value: 1.5
+      value: 1.25
       objectReference: {fileID: 0}
     - target: {fileID: 6717680675332208624, guid: 11933265c6e0a6046a1bb52a914d484a, type: 3}
       propertyPath: m_Name
@@ -2992,7 +2992,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbf3c342f85c1924594a312b1c15b82e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 1.2
+  moveSpeed: 0.7
   jumpHeight: 1
   jumpFrequency: 2
 --- !u!1001 &2018860436
