@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -56,7 +57,9 @@ public class CountdownTriggerZone : MonoBehaviour
 
         if (!player.animator.GetBool("isCrouching"))
         {
-            player.Die(); // 플레이어 사망 처리
+            if (NetworkManager.Singleton.IsServer) {
+                player.Die(); // 플레이어 사망 처리
+            }
         }
 
     }
