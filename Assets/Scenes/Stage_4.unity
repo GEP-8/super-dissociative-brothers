@@ -3896,6 +3896,22 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: GoToStageSelect
       objectReference: {fileID: 0}
+    - target: {fileID: 2254789558090284058, guid: 8e794684236af8a4b9df9e5de1ca6db8, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1677296291}
+    - target: {fileID: 2254789558090284058, guid: 8e794684236af8a4b9df9e5de1ca6db8, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: GoToStageSelect
+      objectReference: {fileID: 0}
+    - target: {fileID: 2254789558090284058, guid: 8e794684236af8a4b9df9e5de1ca6db8, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: StageController, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2254789558090284058, guid: 8e794684236af8a4b9df9e5de1ca6db8, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 3585351338215111456, guid: 8e794684236af8a4b9df9e5de1ca6db8, type: 3}
       propertyPath: m_Text
       value: "\uC2A4\uD14C\uC774\uC9C0 4"
@@ -3904,6 +3920,22 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4932905427170587944, guid: 8e794684236af8a4b9df9e5de1ca6db8, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1677296291}
+    - target: {fileID: 4932905427170587944, guid: 8e794684236af8a4b9df9e5de1ca6db8, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: GoToStage4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4932905427170587944, guid: 8e794684236af8a4b9df9e5de1ca6db8, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: StageController, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4932905427170587944, guid: 8e794684236af8a4b9df9e5de1ca6db8, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 5890285279663077528, guid: 8e794684236af8a4b9df9e5de1ca6db8, type: 3}
       propertyPath: m_Name
       value: SceneUI
@@ -3911,6 +3943,22 @@ PrefabInstance:
     - target: {fileID: 5890285279663077528, guid: 8e794684236af8a4b9df9e5de1ca6db8, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6309046025853035360, guid: 8e794684236af8a4b9df9e5de1ca6db8, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1677296291}
+    - target: {fileID: 6309046025853035360, guid: 8e794684236af8a4b9df9e5de1ca6db8, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: GoToStageSelect
+      objectReference: {fileID: 0}
+    - target: {fileID: 6309046025853035360, guid: 8e794684236af8a4b9df9e5de1ca6db8, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: StageController, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6309046025853035360, guid: 8e794684236af8a4b9df9e5de1ca6db8, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 8202471646027015638, guid: 8e794684236af8a4b9df9e5de1ca6db8, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3951,6 +3999,22 @@ PrefabInstance:
     - target: {fileID: 8202471646027015638, guid: 8e794684236af8a4b9df9e5de1ca6db8, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8559230478205586306, guid: 8e794684236af8a4b9df9e5de1ca6db8, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1677296291}
+    - target: {fileID: 8559230478205586306, guid: 8e794684236af8a4b9df9e5de1ca6db8, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: GoToStage5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8559230478205586306, guid: 8e794684236af8a4b9df9e5de1ca6db8, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: StageController, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8559230478205586306, guid: 8e794684236af8a4b9df9e5de1ca6db8, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:

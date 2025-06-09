@@ -1,8 +1,12 @@
 using UnityEngine;
 using System.Collections;
+using System;
 
 public class PlayerCollisionHandler : MonoBehaviour
 {
+    public static event Action OnPillCollected;
+    public static event Action OnFlagReached;
+
     public float collectedPills = 0f;
 
     [Header("Component References")]
@@ -43,10 +47,12 @@ public class PlayerCollisionHandler : MonoBehaviour
             case "Pill":
                 Debug.Log("알약과 충돌했습니다!");
                 CollectPill(collision.gameObject);
+                OnPillCollected?.Invoke();
                 break;
 
             case "Flag":
                 Debug.Log("플래그에 도달했습니다!");
+                OnFlagReached?.Invoke();
                 StartCoroutine(ShowUIWithCurve(clearUI));
                 break;
         }
