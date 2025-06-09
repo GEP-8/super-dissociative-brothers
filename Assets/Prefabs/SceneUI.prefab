@@ -844,9 +844,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   up: {fileID: 5353614676242174874}
+  upOn: {fileID: 2186510833706377945}
   down: {fileID: 2899348021022362069}
+  downOn: {fileID: 2953342459770178580}
   left: {fileID: 8171948235667737592}
+  leftOn: {fileID: 2015253304271970213}
   right: {fileID: 5123570492190079974}
+  rightOn: {fileID: 5683563446959343757}
 --- !u!1 &2782999681898878806
 GameObject:
   m_ObjectHideFlags: 0

@@ -5,8 +5,10 @@ using UnityEngine;
 
 namespace Network {
     public class PlayerInput : NetworkBehaviour {
+        public static PlayerInput Instance { get; private set; }
+
         // 서버로부터 받은 데이터를 저장
-        private PlayerAction[] _allowedActions;
+        public PlayerAction[] _allowedActions;
 
         // 키가 눌린 상태이면 true, 아니면 false
         private bool[] _allowedActionsStatus;
@@ -24,7 +26,21 @@ namespace Network {
             { KeyCode.Space, PlayerAction.Jump },
             { KeyCode.LeftShift, PlayerAction.Crouch }
         };
-
+        
+        private void Start()
+        {
+            // 싱글톤 인스턴스 설정
+            if (Instance == null)
+            {
+                Instance = this;
+            }
+            // else
+            // {
+            //     Debug.LogError("PlayerController 인스턴스가 이미 존재합니다! 중복된 인스턴스를 제거합니다.");
+            //     Destroy(gameObject); // 중복된 인스턴스가 있다면 삭제
+            // }
+        }
+        
         public override void OnNetworkSpawn() {
             if (!IsClient || !IsOwner) {
                 enabled = false;
