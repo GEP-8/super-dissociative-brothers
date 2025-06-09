@@ -7,6 +7,6 @@ public class stage2EnterZone : MonoBehaviour
         PlayerNetwork.Instance.ShiftAllowedActions(1);
     }
     private void OnTriggerExit(Collider other) {
-        PlayerNetwork.Instance.ShiftAllowedActions(-1);
+        PlayerNetwork.Instance.ShiftAllowedActions(0);
     }
 }
