@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Unity.Netcode;
 using UnityEngine;
@@ -12,6 +13,7 @@ namespace Network
 
 
         public MergeStrategy MergeStrategy { get; set; } = MergeStrategy.Latest;
+        public List<ulong> clientIds { get; } = new List<ulong>();
         public Dictionary<ulong, PlayerAction[]> AllowedActionsDictionary { get; } = new();
         public Dictionary<ulong, Dictionary<PlayerAction, bool>> ActionStatusDictionary { get; } = new();
 
@@ -56,19 +58,15 @@ namespace Network
         private void OnClientConnected(ulong clientId)
         {
             Debug.Log($"클라이언트 ID: {clientId}가 서버에 연결되었습니다.");
-
-            AllowedActionsDictionary[clientId] = new[] {
-                //tmp for test
-                PlayerAction.RightMove,
-                PlayerAction.LeftMove,
-                // PlayerAction.UpMove,
-                // PlayerAction.DownMove,
-                PlayerAction.Jump,
-                PlayerAction.Crouch
-            };
+            
+            // 새로운 클라이언트의 값 초기화
+            clientIds.Add(clientId);
             ActionStatusDictionary[clientId] = new Dictionary<PlayerAction, bool>();
 
-            SyncAllowedActions(clientId);
+            for (int i = 0; i < clientIds.Count; i++) {
+                AllowedActionsDictionary[clientIds[i]] = PlayerConstants.keyDistribution[clientIds.Count][i];
+                SyncAllowedActions(clientIds[i]);
+            }
         }
 
         private void SyncAllowedActions(ulong clientId)
@@ -129,7 +127,7 @@ namespace Network
 
             if (!AllowedActionsDictionary[invokedClientId].Contains(playerAction))
             {
-                Debug.LogError($"Client {invokedClientId} is not allowed to perform {playerAction}.");
+                Debug.LogWarning($"Client {invokedClientId} is not allowed to perform {playerAction}.");
                 return;
             }
 
