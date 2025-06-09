@@ -2974,6 +2974,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Moving Enemy 2
       objectReference: {fileID: 0}
+    - target: {fileID: 3748046371521796639, guid: 36e1f2ddc9ce81a49aef5f79d433b3ba, type: 3}
+      propertyPath: GlobalObjectIdHash
+      value: 875981830
+      objectReference: {fileID: 0}
+    - target: {fileID: 3748046371521796639, guid: 36e1f2ddc9ce81a49aef5f79d433b3ba, type: 3}
+      propertyPath: SceneMigrationSynchronization
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3748046371521796639, guid: 36e1f2ddc9ce81a49aef5f79d433b3ba, type: 3}
+      propertyPath: InScenePlacedSourceGlobalObjectIdHash
+      value: 2691589791
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3236,6 +3248,18 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1693141958695415912, guid: 11933265c6e0a6046a1bb52a914d484a, type: 3}
+      propertyPath: GlobalObjectIdHash
+      value: 1704493592
+      objectReference: {fileID: 0}
+    - target: {fileID: 1693141958695415912, guid: 11933265c6e0a6046a1bb52a914d484a, type: 3}
+      propertyPath: SceneMigrationSynchronization
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1693141958695415912, guid: 11933265c6e0a6046a1bb52a914d484a, type: 3}
+      propertyPath: InScenePlacedSourceGlobalObjectIdHash
+      value: 2995684202
+      objectReference: {fileID: 0}
     - target: {fileID: 2056866891174251264, guid: 11933265c6e0a6046a1bb52a914d484a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 7.5
@@ -3382,7 +3406,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1050315274}
   - component: {fileID: 1050315273}
-  - component: {fileID: 1050315272}
+  - component: {fileID: 1050315275}
   m_Layer: 0
   m_Name: DeActivation Zone
   m_TagString: Untagged
@@ -3390,23 +3414,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1050315272
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1050315271}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2e8e76732924aac43adc6c6dedf01c31, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  interval: 1
-  repeatDelay: 5
-  checkDuration: 2
-  checkInterval: 0.2
-  countdownText: {fileID: 1103672394}
 --- !u!61 &1050315273
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3468,6 +3475,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1050315275
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1050315271}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4a8eda45b98b964ba32eb6db8237c87, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1103672391
 GameObject:
   m_ObjectHideFlags: 0
@@ -3824,6 +3843,18 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1693141958695415912, guid: 11933265c6e0a6046a1bb52a914d484a, type: 3}
+      propertyPath: GlobalObjectIdHash
+      value: 2770132621
+      objectReference: {fileID: 0}
+    - target: {fileID: 1693141958695415912, guid: 11933265c6e0a6046a1bb52a914d484a, type: 3}
+      propertyPath: SceneMigrationSynchronization
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1693141958695415912, guid: 11933265c6e0a6046a1bb52a914d484a, type: 3}
+      propertyPath: InScenePlacedSourceGlobalObjectIdHash
+      value: 2995684202
+      objectReference: {fileID: 0}
     - target: {fileID: 2056866891174251264, guid: 11933265c6e0a6046a1bb52a914d484a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 5.5
@@ -4068,6 +4099,18 @@ PrefabInstance:
     - target: {fileID: 1392308249707721634, guid: 11933265c6e0a6046a1bb52a914d484a, type: 3}
       propertyPath: m_LocalPosition.y
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1693141958695415912, guid: 11933265c6e0a6046a1bb52a914d484a, type: 3}
+      propertyPath: GlobalObjectIdHash
+      value: 1024183893
+      objectReference: {fileID: 0}
+    - target: {fileID: 1693141958695415912, guid: 11933265c6e0a6046a1bb52a914d484a, type: 3}
+      propertyPath: SceneMigrationSynchronization
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1693141958695415912, guid: 11933265c6e0a6046a1bb52a914d484a, type: 3}
+      propertyPath: InScenePlacedSourceGlobalObjectIdHash
+      value: 2995684202
       objectReference: {fileID: 0}
     - target: {fileID: 2056866891174251264, guid: 11933265c6e0a6046a1bb52a914d484a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4418,6 +4461,18 @@ PrefabInstance:
       propertyPath: m_LocalPosition.x
       value: -1
       objectReference: {fileID: 0}
+    - target: {fileID: 1693141958695415912, guid: 11933265c6e0a6046a1bb52a914d484a, type: 3}
+      propertyPath: GlobalObjectIdHash
+      value: 2116211512
+      objectReference: {fileID: 0}
+    - target: {fileID: 1693141958695415912, guid: 11933265c6e0a6046a1bb52a914d484a, type: 3}
+      propertyPath: SceneMigrationSynchronization
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1693141958695415912, guid: 11933265c6e0a6046a1bb52a914d484a, type: 3}
+      propertyPath: InScenePlacedSourceGlobalObjectIdHash
+      value: 2995684202
+      objectReference: {fileID: 0}
     - target: {fileID: 2056866891174251264, guid: 11933265c6e0a6046a1bb52a914d484a, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3.5
@@ -4518,6 +4573,18 @@ PrefabInstance:
     - target: {fileID: 2912670965115887304, guid: 36e1f2ddc9ce81a49aef5f79d433b3ba, type: 3}
       propertyPath: m_Name
       value: Moving Enemy 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3748046371521796639, guid: 36e1f2ddc9ce81a49aef5f79d433b3ba, type: 3}
+      propertyPath: GlobalObjectIdHash
+      value: 1843764806
+      objectReference: {fileID: 0}
+    - target: {fileID: 3748046371521796639, guid: 36e1f2ddc9ce81a49aef5f79d433b3ba, type: 3}
+      propertyPath: SceneMigrationSynchronization
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3748046371521796639, guid: 36e1f2ddc9ce81a49aef5f79d433b3ba, type: 3}
+      propertyPath: InScenePlacedSourceGlobalObjectIdHash
+      value: 2691589791
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

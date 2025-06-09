@@ -1,5 +1,4 @@
 using System.Collections;
-using Network;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -33,7 +32,7 @@ public class CountdownTriggerZone : MonoBehaviour
 
     IEnumerator RepeatCountdown(PlayerCollisionHandler player)
     {
-        
+
         while (!player.animator.GetCurrentAnimatorStateInfo(0).IsName("dead"))
         {
             yield return StartCoroutine(CountdownSequence(player));
@@ -44,7 +43,7 @@ public class CountdownTriggerZone : MonoBehaviour
 
     IEnumerator CountdownSequence(PlayerCollisionHandler player)
     {
-        string[] messages = { "3", "2", "1", "멈춰!" };
+        string[] messages = { "3", "2", "1", "숙여!" };
 
         foreach (string msg in messages)
         {
@@ -55,10 +54,18 @@ public class CountdownTriggerZone : MonoBehaviour
 
         countdownText.enabled = false;
 
-        if(!player.animator.GetBool("isCrouching"))
+        if (!player.animator.GetBool("isCrouching"))
         {
             player.Die(); // 플레이어 사망 처리
         }
 
+    }
+
+    public void Deactivate()
+    {
+        activated = false;
+        repeatCoroutine = null;
+        countdownText.enabled = false; // 텍스트 비활성화
+        StopAllCoroutines(); // 모든 코루틴 중지
     }
 }
