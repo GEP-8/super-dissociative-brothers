@@ -201,7 +201,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -8, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.3, y: 1.3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2108331858}
@@ -2134,9 +2134,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2871976680458827723, guid: 11933265c6e0a6046a1bb52a914d484a, type: 3}
+      propertyPath: movingSpeed
+      value: 1.5
+      objectReference: {fileID: 0}
     - target: {fileID: 6717680675332208624, guid: 11933265c6e0a6046a1bb52a914d484a, type: 3}
       propertyPath: m_Name
       value: Moving Obstacle 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8148070697335335433, guid: 11933265c6e0a6046a1bb52a914d484a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2151,6 +2159,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -6902265086396222664, guid: 2428677ba9b5e8f4f80d334268ec0774, type: 3}
+      propertyPath: m_Animator
+      value: 
+      objectReference: {fileID: 944826833}
+    - target: {fileID: 3025486991010060562, guid: 2428677ba9b5e8f4f80d334268ec0774, type: 3}
+      propertyPath: clearUI
+      value: 
+      objectReference: {fileID: 1884493864}
+    - target: {fileID: 3025486991010060562, guid: 2428677ba9b5e8f4f80d334268ec0774, type: 3}
+      propertyPath: gameOverUI
+      value: 
+      objectReference: {fileID: 1884493863}
     - target: {fileID: 3226371800214689686, guid: 2428677ba9b5e8f4f80d334268ec0774, type: 3}
       propertyPath: GlobalObjectIdHash
       value: 4289550471
@@ -2207,6 +2227,11 @@ PrefabInstance:
 --- !u!4 &944826832 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5956420372590465698, guid: 2428677ba9b5e8f4f80d334268ec0774, type: 3}
+  m_PrefabInstance: {fileID: 944826831}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &944826833 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 3561577994674912230, guid: 2428677ba9b5e8f4f80d334268ec0774, type: 3}
   m_PrefabInstance: {fileID: 944826831}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1037273134
@@ -2487,9 +2512,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2871976680458827723, guid: 11933265c6e0a6046a1bb52a914d484a, type: 3}
+      propertyPath: movingSpeed
+      value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2871976680458827723, guid: 11933265c6e0a6046a1bb52a914d484a, type: 3}
+      propertyPath: firstToPointA
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6717680675332208624, guid: 11933265c6e0a6046a1bb52a914d484a, type: 3}
       propertyPath: m_Name
       value: Moving Obstacle 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8148070697335335433, guid: 11933265c6e0a6046a1bb52a914d484a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2572,9 +2609,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2871976680458827723, guid: 11933265c6e0a6046a1bb52a914d484a, type: 3}
+      propertyPath: movingSpeed
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6717680675332208624, guid: 11933265c6e0a6046a1bb52a914d484a, type: 3}
       propertyPath: m_Name
       value: Moving Obstacle 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8148070697335335433, guid: 11933265c6e0a6046a1bb52a914d484a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2648,6 +2693,10 @@ PrefabInstance:
     - target: {fileID: 2056866891174251264, guid: 11933265c6e0a6046a1bb52a914d484a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2871976680458827723, guid: 11933265c6e0a6046a1bb52a914d484a, type: 3}
+      propertyPath: movingSpeed
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 6717680675332208624, guid: 11933265c6e0a6046a1bb52a914d484a, type: 3}
       propertyPath: m_Name
@@ -2768,6 +2817,16 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8e794684236af8a4b9df9e5de1ca6db8, type: 3}
+--- !u!224 &1884493863 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 1919996163492019855, guid: 8e794684236af8a4b9df9e5de1ca6db8, type: 3}
+  m_PrefabInstance: {fileID: 1884493862}
+  m_PrefabAsset: {fileID: 0}
+--- !u!224 &1884493864 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 4312773753284857965, guid: 8e794684236af8a4b9df9e5de1ca6db8, type: 3}
+  m_PrefabInstance: {fileID: 1884493862}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1951686038
 GameObject:
   m_ObjectHideFlags: 0
@@ -2780,6 +2839,7 @@ GameObject:
   - component: {fileID: 1951686039}
   - component: {fileID: 1951686041}
   - component: {fileID: 1951686042}
+  - component: {fileID: 1951686043}
   m_Layer: 0
   m_Name: Boss Slime
   m_TagString: Enemy
@@ -2918,8 +2978,23 @@ MonoBehaviour:
   frames:
   - {fileID: 5459622581980109872, guid: 5241136f690883047863178d9541d4e9, type: 3}
   - {fileID: 514944483313700217, guid: 19a7508c0329f73429e0c80a96a72817, type: 3}
-  frameRate: 0.25
+  frameRate: 1.5707
   col: {fileID: 1951686041}
+--- !u!114 &1951686043
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1951686038}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbf3c342f85c1924594a312b1c15b82e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 1.2
+  jumpHeight: 1
+  jumpFrequency: 2
 --- !u!1001 &2018860436
 PrefabInstance:
   m_ObjectHideFlags: 0

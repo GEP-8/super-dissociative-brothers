@@ -7,6 +7,7 @@ public class MoveAB : MonoBehaviour
     public Transform pointB;
     public float movingSpeed = 1.0f;
     public float waitTime = 1.0f;
+    public bool firstToPointA = true;
 
     private Transform targetPoint;
     private bool isWaiting = false;
@@ -18,7 +19,7 @@ public class MoveAB : MonoBehaviour
             return;
         }
 
-        targetPoint = pointB;
+        targetPoint = firstToPointA ? pointA : pointB;
     }
     
     void Update()

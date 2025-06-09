@@ -183,6 +183,7 @@ MonoBehaviour:
   pointB: {fileID: 1166313238481736626}
   movingSpeed: 1
   waitTime: 0
+  firstToPointA: 1
 --- !u!114 &7393990605572400500
 MonoBehaviour:
   m_ObjectHideFlags: 0

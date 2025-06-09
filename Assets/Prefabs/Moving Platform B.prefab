@@ -20,6 +20,10 @@ PrefabInstance:
       propertyPath: InScenePlacedSourceGlobalObjectIdHash
       value: 1233315944
       objectReference: {fileID: 0}
+    - target: {fileID: 579849835903784146, guid: 20006e92100a3924b9d2fc3fb9f0561f, type: 3}
+      propertyPath: GlobalObjectIdHash
+      value: 2018991005
+      objectReference: {fileID: 0}
     - target: {fileID: 1592677181063743715, guid: 20006e92100a3924b9d2fc3fb9f0561f, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
       value: 3.0238094
