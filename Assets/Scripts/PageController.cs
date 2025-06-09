@@ -16,7 +16,7 @@ public class PageController : MonoBehaviour
 	}
     public void GoToNetworkConnection()
     {
-        transitionManager.StartSceneTransition("LobbyScene"); // ������Ʈ ���� ��, ��Ʈ��ũ ���� ������ ���� �ʿ�
+        transitionManager.StartSceneTransition("LobbyScene");
     }
 
     public void GoToNextScene()
