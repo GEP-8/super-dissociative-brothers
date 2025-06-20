@@ -1,25 +1,32 @@
+using System.Threading;
 using UnityEngine;
 
 public class StarUIHandler : MonoBehaviour
 {
-    [Header("Star UI ¿ÀºêÁ§Æ® (Flag¿ë)")]
-    public GameObject star1;    // È°¼º »óÅÂ Star_1
-    public GameObject oStar1;   // ºñÈ°¼º »óÅÂ OStar_1
+    [Header("Star UI ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ® (Flagï¿½ï¿½)")]
+    public GameObject star1;    // È°ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Star_1
+    public GameObject oStar1;   // ï¿½ï¿½È°ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ OStar_1
 
-    [Header("Star UI ¿ÀºêÁ§Æ® (Pill¿ë)")]
-    public GameObject star2;    // È°¼º »óÅÂ Star_2
-    public GameObject oStar2;   // ºñÈ°¼º »óÅÂ OStar_2
+    [Header("Star UI ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ® (Pillï¿½ï¿½)")]
+    public GameObject star2;    // È°ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Star_2
+    public GameObject oStar2;   // ï¿½ï¿½È°ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ OStar_2
+
+    [Header("Star UI Object (For Clear Time)")]
+    public GameObject star3; // Activated State Star_3
+    public GameObject oStar3; // Deactivated State OStar_3
 
     private void OnEnable()
     {
         PlayerCollisionHandler.OnPillCollected += HandlePillStar;
         PlayerCollisionHandler.OnFlagReached += HandleFlagStar;
+        TimerText.OnClearTimeConditionMet += HandleClearTime;
     }
 
     private void OnDisable()
     {
         PlayerCollisionHandler.OnPillCollected -= HandlePillStar;
         PlayerCollisionHandler.OnFlagReached -= HandleFlagStar;
+        TimerText.OnClearTimeConditionMet -= HandleClearTime;
     }
 
     private void HandleFlagStar()
@@ -32,5 +39,11 @@ public class StarUIHandler : MonoBehaviour
     {
         if (star2 != null) star2.SetActive(false);
         if (oStar2 != null) oStar2.SetActive(true);
+    }
+
+    private void HandleClearTime()
+    {
+        if (star3 != null) star3.SetActive(false);
+        if (oStar3 != null) oStar3.SetActive(true);
     }
 }
