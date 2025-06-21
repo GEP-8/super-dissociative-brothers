@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Unity.Netcode;
 using UnityEngine;
@@ -8,6 +9,8 @@ public class PlayerVisionManager : MonoBehaviour
     public RawImage fullScreenView; // 전체 화면을 차지하는 단일 RawImage
     public QuadrantVisionController visionController; // 단일 컨트롤러
     public float sharedRadius = 0.15f;
+
+    public static event Action OnSetupVision;
 
     private int myPlayerIndex;
     private int playerCount;
@@ -39,6 +42,8 @@ public class PlayerVisionManager : MonoBehaviour
             visionController.quadrantMaterial.SetFloat("_SplitMode", playerCount);
             visionController.quadrantMaterial.SetFloat("_SharedRadius", sharedRadius);
         }
+
+        OnSetupVision?.Invoke();
     }
 
     void SetRectTransform(RectTransform rt, Vector2 anchorMin, Vector2 anchorMax)
