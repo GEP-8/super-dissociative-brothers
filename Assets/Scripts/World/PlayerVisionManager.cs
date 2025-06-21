@@ -10,6 +10,8 @@ public class PlayerVisionManager : MonoBehaviour
     public QuadrantVisionController visionController; // 단일 컨트롤러
     public float sharedRadius = 0.15f;
 
+    public bool debugMode = false;
+
     public static event Action OnSetupVision;
 
     private int myPlayerIndex;
@@ -18,10 +20,13 @@ public class PlayerVisionManager : MonoBehaviour
     void Start()
     {
         playerCount = NetworkManager.Singleton.ConnectedClients.Count;
-        Debug.Log($"Connected Players: {playerCount}");
-
         myPlayerIndex = GetMyPlayerIndex();
-        Debug.Log($"My Player Index: {myPlayerIndex}");
+
+        if (debugMode)
+        {
+            Debug.Log($"Connected Players: {playerCount}");
+            Debug.Log($"My Player Index: {myPlayerIndex}");
+        }
 
         SetupVision();
     }

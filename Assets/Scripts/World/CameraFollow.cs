@@ -7,6 +7,8 @@ public class CameraFollow : MonoBehaviour
     public Vector2 minPosition; // camera boundary (left, bottom)
     public Vector2 maxPosition; // camera boundary (right, top)
 
+    public bool debugMode = false;
+
     void LateUpdate()
     {
         if (target == null) return;
@@ -21,6 +23,6 @@ public class CameraFollow : MonoBehaviour
 
         transform.position = new Vector3(clampedX, clampedY, transform.position.z);
 
-        Debug.Log($"Camera Position: {transform.position}, Target Position: {target.position}");
+        if(debugMode) Debug.Log($"Camera Position: {transform.position}, Target Position: {target.position}");
     }
 }
