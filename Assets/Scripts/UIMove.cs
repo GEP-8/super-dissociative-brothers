@@ -20,7 +20,7 @@ public class UIMove : MonoBehaviour
 
     IEnumerator MoveSequence()
     {
-        yield return new WaitForSeconds(waitTime);
+        yield return new WaitForSecondsRealtime(waitTime);
         yield return StartCoroutine(MoveUITo(endPos, moveDuration, easeInCurve));
     }
 
@@ -31,7 +31,7 @@ public class UIMove : MonoBehaviour
 
         while (time < duration)
         {
-            time += Time.deltaTime;
+            time += Time.unscaledDeltaTime;
             float t = Mathf.Clamp01(time / duration);
             float easedT = easeInCurve.Evaluate(t);
             rectTransform.anchoredPosition = Vector2.Lerp(initial, target, easedT);

@@ -29,7 +29,7 @@ public class MouseUI : MonoBehaviour
         Cursor.visible = false;
 
         lastMousePosition = Mouse.current.position.ReadValue();
-        lastMoveTime = Time.time;
+        lastMoveTime = Time.unscaledTime;
         pointerImage.gameObject.SetActive(true);
 
         UpdatePointerPositionImmediately();
@@ -57,14 +57,14 @@ public class MouseUI : MonoBehaviour
         {
             pointerImage.position = currentMousePos;
             lastMousePosition = currentMousePos;
-            lastMoveTime = Time.time;
+            lastMoveTime = Time.unscaledTime;
 
             if (!pointerImage.gameObject.activeSelf)
                 pointerImage.gameObject.SetActive(true);
         }
         else
         {
-            if (Time.time - lastMoveTime >= inactivityDuration)
+            if (Time.unscaledTime - lastMoveTime >= inactivityDuration)
             {
                 if (pointerImage.gameObject.activeSelf)
                     pointerImage.gameObject.SetActive(false);

@@ -21,6 +21,10 @@ public class PlayerCollisionHandler : MonoBehaviour
     public float uiMoveDuration = 1.0f;
     public AnimationCurve moveCurve;
 
+
+    public static event Action OnGameStopped;
+
+
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -93,5 +97,7 @@ public class PlayerCollisionHandler : MonoBehaviour
         }
 
         ui.anchoredPosition = end;
+
+        OnGameStopped?.Invoke(); // Stop the game process
     }
 }

@@ -23,9 +23,9 @@ public class TextMove : MonoBehaviour
 
     IEnumerator MoveSequence()
     {
-        yield return new WaitForSeconds(startWaitTime);
+        yield return new WaitForSecondsRealtime(startWaitTime);
         yield return StartCoroutine(MoveUITo(centerPos, moveDuration, easeInCurve));
-        yield return new WaitForSeconds(waitTime);
+        yield return new WaitForSecondsRealtime(waitTime);
         yield return StartCoroutine(MoveUITo(endPos, moveDuration, easeOutCurve));
     }
 
@@ -33,10 +33,15 @@ public class TextMove : MonoBehaviour
     {
         Vector2 initial = rectTransform.anchoredPosition;
         float time = 0f;
+        float lastDt = 0f;
 
         while (time < duration)
         {
-            time += Time.deltaTime;
+            // 부드럽게 보정된 deltaTime
+            float dt = Mathf.Lerp(lastDt, Time.unscaledDeltaTime, 0.5f);
+            lastDt = dt;
+
+            time += dt;
             float t = Mathf.Clamp01(time / duration);
             float easedT = easeInCurve.Evaluate(t);
             rectTransform.anchoredPosition = Vector2.Lerp(initial, target, easedT);

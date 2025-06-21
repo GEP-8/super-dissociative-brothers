@@ -49,7 +49,7 @@ public class TransitionOut : MonoBehaviour
 
         while (elapsed < transitionDuration)
         {
-            elapsed += Time.deltaTime;
+            elapsed += Time.unscaledDeltaTime;
             float t = Mathf.Clamp01(elapsed / transitionDuration);
             float curveT = transitionCurve.Evaluate(t);
             blackScreen.anchoredPosition = Vector2.Lerp(startPos, endPos, curveT);

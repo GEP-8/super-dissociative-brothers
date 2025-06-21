@@ -45,12 +45,12 @@ public class TransitionController : MonoBehaviour
         {
             float progress = Mathf.Lerp(0f, 1f, time / transitionDuration);
             mat.SetFloat("_Progress", progress);
-            time += Time.deltaTime;
+            time += Time.unscaledDeltaTime;
             yield return null;
         }
 
         mat.SetFloat("_Progress", 1f);
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSecondsRealtime(0.1f);
 
         SceneManager.LoadScene(sceneName);
     }

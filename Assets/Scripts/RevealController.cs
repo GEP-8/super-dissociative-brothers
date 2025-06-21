@@ -19,7 +19,7 @@ public class RevealController : MonoBehaviour
 
         while (time < duration)
         {
-            time += Time.deltaTime;
+            time += Time.unscaledDeltaTime;
             float t = Mathf.Clamp01(time / duration);
             float cutoff = curve.Evaluate(t);
             transitionMaterial.SetFloat("_Cutoff", cutoff);

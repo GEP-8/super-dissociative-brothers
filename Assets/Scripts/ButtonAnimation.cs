@@ -91,7 +91,7 @@ public class ButtonAnimation : MonoBehaviour
     {
         while (Vector3.Distance(transform.localScale, targetScale) > 0.001f)
         {
-            transform.localScale = Vector3.Lerp(transform.localScale, targetScale, Time.deltaTime * animationSpeed);
+            transform.localScale = Vector3.Lerp(transform.localScale, targetScale, Time.unscaledDeltaTime * animationSpeed);
             yield return null;
         }
         transform.localScale = targetScale;
@@ -114,7 +114,7 @@ public class ButtonAnimation : MonoBehaviour
 
         while (t < 1f)
         {
-            t += Time.deltaTime * animationSpeed;
+            t += Time.unscaledDeltaTime * animationSpeed;
             buttonImage.color = Color.Lerp(startColor, targetColor, t);
             yield return null;
         }
