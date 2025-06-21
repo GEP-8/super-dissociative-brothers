@@ -239,7 +239,7 @@ MonoBehaviour:
     m_Bits: 8
   isGrounded: 1
   speed: 2.5
-  jumpForce: 10
+  jumpForce: 8
   animator: {fileID: 3561577994674912230}
   jumpState: 0
 --- !u!114 &8031823481989963726
