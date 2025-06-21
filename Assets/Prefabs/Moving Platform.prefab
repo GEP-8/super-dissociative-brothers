@@ -109,6 +109,7 @@ GameObject:
   - component: {fileID: 1592677181063743715}
   - component: {fileID: 8460797997684649837}
   - component: {fileID: 6682900938133483906}
+  - component: {fileID: 1772140079832268738}
   m_Layer: 3
   m_Name: Platform
   m_TagString: Untagged
@@ -295,3 +296,15 @@ MonoBehaviour:
   SwitchTransformSpaceWhenParented: 0
   Interpolate: 1
   SlerpPosition: 0
+--- !u!114 &1772140079832268738
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9205197263226530473}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0005929e66e8e324ca8c05b9bb41680c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
