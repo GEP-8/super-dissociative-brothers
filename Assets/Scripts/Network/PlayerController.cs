@@ -27,6 +27,7 @@ namespace Network
         private void FixedUpdate()
         {
             CheckGround(); // 바닥에 있는지 확인
+            rb.constraints = RigidbodyConstraints2D.FreezeRotation;
             animator.SetBool("isGrounded", isGrounded); // 애니메이터에 바닥 상태 전달 (필요시 추가)
             animator.SetBool("Walkingright", false); // 애니메이션 상태 초기화 (필요시 추가)
             animator.SetBool("Walkingleft", false); // 애니메이션 상태 초기화 (필요시 추가)
@@ -55,6 +56,7 @@ namespace Network
                     case PlayerAction.Crouch:
                         if (isGrounded) // 앉기는 바닥에 있을 때만 가능
                         {
+                            rb.constraints = RigidbodyConstraints2D.FreezePositionX; // X축 이동 제한
                             // 앉기 로직을 여기에 추가 (예: 콜라이더 크기 조정 등)
                             ShrinkColliderSafely(); // 콜라이더 크기를 안전하게 축소 
                             animator.SetBool("isCrouching", true); // 앉기 애니메이션 상태 업데이트 (필요시 추가)
