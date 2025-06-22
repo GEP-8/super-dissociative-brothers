@@ -4,7 +4,6 @@ using System.Linq;
 using Newtonsoft.Json;
 using Unity.Netcode;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 namespace Network
 {
@@ -46,7 +45,6 @@ namespace Network
 
             // 이벤트 구독
             NetworkManager.Singleton.OnClientConnectedCallback += OnClientConnected;
-            NetworkManager.Singleton.OnClientDisconnectCallback += OnClientDisconnect;
         }
 
         public override void OnNetworkDespawn()
@@ -55,7 +53,6 @@ namespace Network
             if (IsServer && NetworkManager.Singleton != null) // 씬 전환 등으로 NetworkManager가 null이 될 수 있으니 체크
             {
                 NetworkManager.Singleton.OnClientConnectedCallback -= OnClientConnected;
-                NetworkManager.Singleton.OnClientDisconnectCallback -= OnClientDisconnect;
             }
         }
 
@@ -74,18 +71,6 @@ namespace Network
             }
         }
         
-        private void OnClientDisconnect(ulong clientId)
-        {
-            Debug.Log($"클라이언트 연결 끊김: {clientId}");
-            
-            // 현재 네트워크 세션을 종료합니다.
-            // 클라이언트라면 서버와의 연결을 끊습니다.
-            // 호스트라면 서버를 닫고 모든 클라이언트의 연결을 끊습니다.
-            NetworkManager.Singleton.Shutdown();
-            
-            Debug.Log("연결을 종료하고 로비로 돌아갑니다.");
-            SceneManager.LoadScene("LobbyScene", LoadSceneMode.Single);
-        }
 
         public void ShiftAllowedActions(int shift) {
             ClearActionStatusDictionary();

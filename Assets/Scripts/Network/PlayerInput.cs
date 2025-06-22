@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using Unity.Netcode;
 using UnityEngine;
 
@@ -48,10 +49,12 @@ namespace Network {
             }
 
             _allowedActionsStatus = new bool[Enum.GetValues(typeof(PlayerAction)).Length];
+            NetworkManager.Singleton.OnClientDisconnectCallback += OnClientDisconnect;
         }
 
         public override void OnNetworkDespawn() {
             _allowedActions = null;
+            NetworkManager.Singleton.OnClientDisconnectCallback -= OnClientDisconnect;
         }
 
         // 서버로부터 허용된 액션 목록을 받는 ClientRpc 메소드
@@ -92,6 +95,19 @@ namespace Network {
                     }
                 }
             }
+        }
+        
+        private void OnClientDisconnect(ulong clientId)
+        {
+            Debug.Log($"클라이언트 연결 끊김: {clientId}");
+            
+            // 현재 네트워크 세션을 종료합니다.
+            // 클라이언트라면 서버와의 연결을 끊습니다.
+            // 호스트라면 서버를 닫고 모든 클라이언트의 연결을 끊습니다.
+            NetworkManager.Singleton.Shutdown();
+            
+            Debug.Log("연결을 종료하고 로비로 돌아갑니다.");
+            SceneManager.LoadScene("LobbyScene", LoadSceneMode.Single);
         }
     }
 }
