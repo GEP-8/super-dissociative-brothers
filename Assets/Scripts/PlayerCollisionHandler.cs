@@ -81,15 +81,20 @@ public class PlayerCollisionHandler : MonoBehaviour
 
     private IEnumerator ShowUIWithCurve(RectTransform ui)
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSecondsRealtime(1f);
 
         Vector2 start = ui.anchoredPosition;
         Vector2 end = uiTargetPos;
         float elapsed = 0f;
+        float lastDt = 0f;
 
         while (elapsed < uiMoveDuration)
         {
-            elapsed += Time.deltaTime;
+            // 부드럽게 보정된 deltaTime
+            float dt = Mathf.Lerp(lastDt, Time.unscaledDeltaTime, 0.5f);
+            lastDt = dt;
+
+            elapsed += dt;
             float t = Mathf.Clamp01(elapsed / uiMoveDuration);
             float curvedT = moveCurve.Evaluate(t);
             ui.anchoredPosition = Vector2.Lerp(start, end, curvedT);
