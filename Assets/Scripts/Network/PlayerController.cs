@@ -15,7 +15,10 @@ namespace Network
         public float jumpForce = 15f; // 점프 힘
         public Animator animator; // 애니메이터 컴포넌트 (필요시 추가)
         private Vector3 originalSize; // 최초 크기를 저장하기 위한 변수
-        public JumpState jumpState = JumpState.Idle; // 점프 상태를 나타내는 변수
+        private JumpState jumpState = JumpState.Idle; // 점프 상태를 나타내는 변수
+
+        private float epsilon = 1e-4f; // 점프 조작감을 위해서 허용하는 범위
+
         private void Awake()
         {
             playerNetwork = PlayerNetwork.Instance;
@@ -72,33 +75,19 @@ namespace Network
                         break;
                     case PlayerAction.Jump:
                         Debug.Log("Jump action received");
-                        switch (jumpState)
+
+                        if (isGrounded && jumpState == JumpState.Idle) // 점프할 수 있는 상태라면
                         {
-                            case JumpState.Idle:
-                                Debug.Log("Jump action in Idle state");
-                                if (isGrounded) // 바닥에 있을 때만 점프 가능
-                                {
-                                    rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse); // 점프 힘 적용
-                                    jumpState = JumpState.JumpUp; // 점프 상태 업데이트
-                                }
-                                break;
-                            case JumpState.JumpUp:
-                                Debug.Log("Jump action in JumpUp state");
-                                if (!isGrounded) // 바닥에 있을 때만 점프 가능
-                                {
-                                    jumpState = JumpState.JumpDown; // 점프 상태 업데이트
-                                }
-                                break;
-                            case JumpState.JumpDown:
-                                Debug.Log("Jump action in JumpDown state");
-                                if (isGrounded) // 바닥에 있을 때만 점프 가능
-                                {
-                                    jumpState = JumpState.Idle; // 점프 상태 업데이트
-                                }
-                                break;
-                        }break;
+                            rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse); // 점프 힘 적용
+                            jumpState = JumpState.Jumping; // 점프 중으로 상태 변경
+                        }
+                        break;
 
                 }
+
+                // 바닥에 있고 y축 방향 속도 크기가 충분히 작다면, 점프 중이 아니라고 판단해도 무방
+                if (isGrounded && rb.linearVelocity.y <= epsilon && rb.linearVelocity.y >= -epsilon)
+                    jumpState = JumpState.Idle; // Idle로 상태 다시 초기화
 
             }
         }

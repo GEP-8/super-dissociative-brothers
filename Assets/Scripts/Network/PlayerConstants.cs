@@ -15,8 +15,7 @@ namespace Network {
     public enum JumpState
     {
         Idle,
-        JumpUp,
-        JumpDown
+        Jumping
     }
 
     public enum MergeStrategy {
