@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Newtonsoft.Json;
 using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -61,7 +62,8 @@ namespace Network
         private void OnClientConnected(ulong clientId)
         {
             Debug.Log($"클라이언트 ID: {clientId}가 서버에 연결되었습니다.");
-            
+            ClearActionStatusDictionary();
+
             // 새로운 클라이언트의 값 초기화
             clientIds.Add(clientId);
             ActionStatusDictionary[clientId] = new Dictionary<PlayerAction, bool>();
@@ -86,12 +88,21 @@ namespace Network
         }
 
         public void ShiftAllowedActions(int shift) {
+            ClearActionStatusDictionary();
             
             for (int i = 0; i < clientIds.Count; i++) {
                 AllowedActionsDictionary[clientIds[i]] = PlayerConstants.keyDistribution[clientIds.Count][(i + shift) % (clientIds.Count)];
-                ActionStatusDictionary[clientIds[i]] = new Dictionary<PlayerAction, bool>();
                 SyncAllowedActions(clientIds[i]);
             }
+        }
+
+        public void ClearActionStatusDictionary() {
+            MergedActionStatusDictionary.Clear();
+            for (int i = 0; i < clientIds.Count; i++) {
+                ActionStatusDictionary[clientIds[i]] = new Dictionary<PlayerAction, bool>();
+            }
+
+            MergeActionStatus();
         }
 
         private void SyncAllowedActions(ulong clientId)
@@ -158,7 +169,7 @@ namespace Network
 
             ActionStatusDictionary[invokedClientId][playerAction] = value;
             MergeActionStatus();
-            Debug.Log($"Server received {playerAction}: {value}. from Client ID: {invokedClientId}");
+            // Debug.Log($"Server received {playerAction}: {value}. from Client ID: {invokedClientId}");
         }
 
         private void MergeActionStatus()
@@ -177,7 +188,7 @@ namespace Network
                     break;
             }
 
-            Debug.Log(MergedActionStatusDictionary.ToString());
+            Debug.Log(JsonConvert.SerializeObject(MergedActionStatusDictionary));
         }
     }
 }
