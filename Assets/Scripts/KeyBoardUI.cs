@@ -1,3 +1,5 @@
+using System;
+using System.Linq;
 using Network;
 using UnityEngine;
 using UnityEngine.UI;
@@ -19,22 +21,10 @@ public class KeyBoardUI : MonoBehaviour
     
     void Update() {
         if (Network.PlayerInput.Instance) { // 이렇게 하면 안되는데;;;;
-            foreach (PlayerAction action in Network.PlayerInput.Instance._allowedActions) {
-                switch (action) {
-                    case PlayerAction.Crouch:
-                        downOn.gameObject.SetActive(true);
-                        break;  
-                    case PlayerAction.Jump:
-                        upOn.gameObject.SetActive(true);
-                        break;
-                    case PlayerAction.LeftMove:
-                        leftOn.gameObject.SetActive(true);
-                        break;
-                    case PlayerAction.RightMove:
-                        rightOn.gameObject.SetActive(true);
-                        break;
-                }
-            }
+            downOn.gameObject.SetActive(Network.PlayerInput.Instance._allowedActions.Contains(PlayerAction.Crouch));
+            upOn.gameObject.SetActive(Network.PlayerInput.Instance._allowedActions.Contains(PlayerAction.Jump));
+            leftOn.gameObject.SetActive(Network.PlayerInput.Instance._allowedActions.Contains(PlayerAction.LeftMove));
+            rightOn.gameObject.SetActive(Network.PlayerInput.Instance._allowedActions.Contains(PlayerAction.RightMove));
         }
         
         if (Keyboard.current == null) return;
